@@ -1,4 +1,16 @@
 ---
+<<<<<<< HEAD
+import Welcome from '../components/Welcome.astro';
+import Layout from '../layouts/Layout.astro';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout>
+	<Welcome />
+</Layout>
+=======
 import Base from '../layouts/Base.astro'; import Header from '../components/Header.astro'; import Footer from '../components/Footer.astro'; import ProductCard from '../components/ProductCard.astro'; import {products} from '../data/products';
 ---
 <Base title="An Tâm GPS — Định vị chính xác, an tâm mọi hành trình"><Header/>
@@ -11,3 +23,4 @@ import Base from '../layouts/Base.astro'; import Header from '../components/Head
 <section class="section"><div class="wrap media"><div><span class="eyebrow">TRẢI NGHIỆM THỰC TẾ</span><h2>Xem ứng dụng khi đã kết nối thiết bị.</h2></div><video controls preload="metadata" src="/assets/app/demo.mp4"></video></div></section>
 <section class="section support"><div class="wrap support-grid"><div><h2>Cần tư vấn sản phẩm?</h2><p>Gọi hotline hoặc quét QR Zalo để được hỗ trợ.</p><div class="actions"><a class="btn green" href="tel:0866306478">Gọi 0866 306 478</a></div></div><img src="/assets/app/qr-zalo.jpg" alt="QR Zalo"/></div></section>
 </main><Footer/></Base>
+>>>>>>> bdd1a8d (Deploy An Tam GPS data build v1)
