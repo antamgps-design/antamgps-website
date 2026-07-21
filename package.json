@@ -1,22 +1,4 @@
 {
-<<<<<<< HEAD
-  "name": "antamgps-website",
-  "type": "module",
-  "version": "0.0.1",
-  "engines": {
-    "node": ">=22.12.0"
-  },
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "astro": "^7.1.1"
-  }
-}
-=======
   "name":"antamgps-platform-v2-data-v1",
   "version":"2.0.0",
   "type":"module",
@@ -24,4 +6,3 @@
   "dependencies":{"@astrojs/check":"latest","@tailwindcss/vite":"latest","astro":"latest","tailwindcss":"latest","typescript":"latest"},
   "devDependencies":{}
 }
->>>>>>> bdd1a8d (Deploy An Tam GPS data build v1)

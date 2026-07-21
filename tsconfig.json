@@ -1,9 +1,1 @@
-<<<<<<< HEAD
-{
-  "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"]
-}
-=======
 {"extends":"astro/tsconfigs/strict"}
->>>>>>> bdd1a8d (Deploy An Tam GPS data build v1)
