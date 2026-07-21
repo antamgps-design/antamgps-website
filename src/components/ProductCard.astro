@@ -1,0 +1,4 @@
+---
+const {p}=Astro.props;
+---
+<article class="product-card"><div class="product-image"><img src={p.image} alt={p.name}/></div><span>{p.type}</span><h3>{p.name}</h3><p>{p.tagline}</p><a href={`/san-pham/${p.slug}`}>Xem chi tiết →</a></article>

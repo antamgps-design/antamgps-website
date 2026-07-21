@@ -1,0 +1,8 @@
+{
+  "name":"antamgps-platform-v2-data-v1",
+  "version":"2.0.0",
+  "type":"module",
+  "scripts":{"dev":"astro dev","build":"astro build","preview":"astro preview"},
+  "dependencies":{"@astrojs/check":"latest","@tailwindcss/vite":"latest","astro":"latest","tailwindcss":"latest","typescript":"latest"},
+  "devDependencies":{}
+}

@@ -1,0 +1,4 @@
+---
+import Base from '../../layouts/Base.astro'; import Header from '../../components/Header.astro'; import Footer from '../../components/Footer.astro'; import ProductCard from '../../components/ProductCard.astro'; import {products} from '../../data/products';
+---
+<Base title="Sản phẩm GPS — An Tâm GPS"><Header/><main><section class="page-hero"><div class="wrap"><span class="eyebrow">DANH MỤC SẢN PHẨM</span><h1>Thiết bị GPS cho từng nhu cầu.</h1><p>Thiết bị có dây, không dây, dành cho xe máy, ô tô và đội xe.</p></div></section><section class="section"><div class="wrap products">{products.map(p=><ProductCard p={p}/>)}</div></section></main><Footer/></Base>

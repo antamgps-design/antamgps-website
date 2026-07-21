@@ -1,0 +1,11 @@
+---
+import Base from '../../layouts/Base.astro'; import Header from '../../components/Header.astro'; import Footer from '../../components/Footer.astro'; import {products,getProduct} from '../../data/products';
+export function getStaticPaths(){return products.map(p=>({params:{slug:p.slug}}));}
+const p=getProduct(Astro.params.slug!);
+---
+<Base title={`${p?.name} — An Tâm GPS`}><Header/><main>
+<section class="product-hero"><div class="wrap product-detail-grid"><div><span class="pill dark-pill">{p?.type}</span><h1>{p?.name}</h1><p>{p?.tagline}</p><div class="actions"><a class="btn orange" href="tel:0866306478">Tư vấn sản phẩm</a><a class="btn light" href="/iopgps">Ứng dụng IOPGPS</a></div></div><div class="detail-image"><img src={p?.image} alt={p?.name}/></div></div></section>
+<section class="section"><div class="wrap two-col"><div><span class="eyebrow">TÍNH NĂNG</span><h2>Những điểm nổi bật.</h2><div class="feature-list">{p?.features.map(f=><div>✓ {f}</div>)}</div></div><div class="spec-card"><h3>Thông số chính</h3>{p?.specs.map(s=><div><span>{s[0]}</span><b>{s[1]}</b></div>)}</div></div></section>
+<section class="section soft"><div class="wrap poster"><img src={p?.poster} alt={`Tài liệu ${p?.name}`}/></div></section>
+<section class="section"><div class="wrap app-grid"><div><span class="eyebrow">ỨNG DỤNG DÙNG CHUNG</span><h2>Tất cả thiết bị kết nối với IOPGPS.</h2><p>Chỉ cần một ứng dụng để theo dõi vị trí, xem lịch sử, nhận cảnh báo và quản lý nhiều thiết bị.</p><a class="btn orange" href="/iopgps">Tìm hiểu IOPGPS</a></div><div class="qr-panel"><img src="/assets/app/qr-app.png" alt="QR tải app"/></div></div></section>
+</main><Footer/></Base>
