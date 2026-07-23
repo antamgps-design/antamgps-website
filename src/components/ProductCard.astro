@@ -1,0 +1,7 @@
+---
+const { product } = Astro.props;
+---
+<article class="card product-card"><a href={`/san-pham/${product.slug}/`}>
+  <div class="product-media"><span class="badge">{product.badge}</span><img src={product.image} alt={`${product.name} - ${product.subtitle}`} loading="lazy"/></div>
+  <div class="product-body"><h3>{product.name}</h3><div class="subtitle">{product.subtitle}</div><p>{product.description}</p><span class="text-link">Xem chi tiết →</span></div>
+</a></article>

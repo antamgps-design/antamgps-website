@@ -1,0 +1,21 @@
+---
+import { Menu, Phone, X } from 'lucide-astro';
+---
+<header class="site-header">
+  <div class="container-site header-row">
+    <a href="/" aria-label="Trang chủ An Tâm GPS"><img src="/assets/logo/logo-ngang.png" alt="An Tâm GPS" class="brand-logo" /></a>
+    <nav class="main-nav"><a href="/">Trang chủ</a><a href="/#giai-phap">Giải pháp</a><a href="/san-pham/">Sản phẩm</a><a href="/#ung-dung">Ứng dụng</a><a href="/#ho-tro">Hỗ trợ</a><a href="/#lien-he">Liên hệ</a></nav>
+    <div class="header-actions"><a class="hotline" href="tel:0866306478"><Phone size={17}/> 0866 306 478</a><a class="btn btn-primary" href="/#lien-he">Tư vấn ngay</a></div>
+    <button id="menu-open" class="mobile-trigger" aria-label="Mở menu"><Menu/></button>
+  </div>
+</header>
+<div id="mobile-menu" class="mobile-menu">
+  <div class="mobile-menu-head"><img src="/assets/logo/logo-ngang.png" class="brand-logo" alt="An Tâm GPS"/><button id="menu-close" class="mobile-trigger" aria-label="Đóng menu"><X/></button></div>
+  <nav><a href="/">Trang chủ</a><a href="/san-pham/">Sản phẩm</a><a href="/#giai-phap">Giải pháp</a><a href="/#ung-dung">Ứng dụng</a><a href="/#ho-tro">Hỗ trợ</a><a href="/#lien-he">Liên hệ</a></nav>
+</div>
+<script is:inline>
+const menu=document.getElementById('mobile-menu');
+document.getElementById('menu-open')?.addEventListener('click',()=>menu?.classList.add('open'));
+document.getElementById('menu-close')?.addEventListener('click',()=>menu?.classList.remove('open'));
+menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+</script>

@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { products } from '../../data/products';
+---
+<BaseLayout title="Sản phẩm GPS 4G | An Tâm GPS" description="Danh mục thiết bị định vị GPS 4G có dây và không dây của An Tâm GPS."><Header/><main>
+<section class="product-hero"><div class="container-site" style="text-align:center;max-width:900px"><span class="eyebrow">DANH MỤC SẢN PHẨM</span><h1 class="h2">Thiết bị định vị cho từng nhu cầu sử dụng.</h1><p class="lead">Từ GPS có dây theo dõi liên tục đến thiết bị pin lớn không cần đấu điện, mỗi sản phẩm được lựa chọn để phù hợp với điều kiện sử dụng thực tế.</p></div></section>
+<section class="section"><div class="container-site"><div class="product-grid">{products.map(product=><ProductCard product={product}/>)}</div></div></section>
+</main><Footer/></BaseLayout>
