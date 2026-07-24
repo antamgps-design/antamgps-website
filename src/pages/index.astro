@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ProductCard from '../components/ProductCard.astro';
 import { products } from '../data/products';
-import { MapPin, BellRing, Route, ShieldCheck, Smartphone, Headphones, CheckCircle2, RadioTower, BadgeCheck, ExternalLink } from 'lucide-astro';
+import { MapPin, BellRing, Route, ShieldCheck, Smartphone, Headphones, CheckCircle2, RadioTower, BadgeCheck, ExternalLink, Gift, Phone, Truck } from 'lucide-astro';
 ---
 <BaseLayout title="An Tâm GPS — Định vị chính xác, an tâm mọi hành trình" description="Thiết bị định vị GPS 4G, ứng dụng GPS-ANTAM, SIM data và hỗ trợ kỹ thuật toàn diện.">
 <Header />
@@ -42,11 +42,114 @@ import { MapPin, BellRing, Route, ShieldCheck, Smartphone, Headphones, CheckCirc
     </div>
   </section>
 
-  <section class="gift-strip" aria-label="Ưu đãi khi mua thiết bị">
-    <div class="container-site gift-grid">
-      <div class="gift-copy"><span>Quà tặng khi mua thiết bị</span><h2>SIM 4G & ứng dụng miễn phí 12 tháng</h2><p>Kích hoạt sẵn — Sử dụng ngay — Không phát sinh chi phí trong năm đầu.</p></div>
-      <div class="gift-qr"><img src="/assets/app/qr-app.png" alt="QR tải ứng dụng GPS-ANTAM"/><div><b>Quét mã tải ứng dụng</b><a href="https://www.iopgps.com/" target="_blank" rel="noopener">Mở phiên bản Web <ExternalLink size={15}/></a></div></div>
-      <div class="gift-list"><span><CheckCircle2 size={18}/>Miễn phí SIM Data 12 tháng đầu</span><span><CheckCircle2 size={18}/>Miễn phí sử dụng ứng dụng 12 tháng đầu</span><span><CheckCircle2 size={18}/>Kích hoạt sẵn trước khi giao</span><span><CheckCircle2 size={18}/>Hỗ trợ cài đặt và hướng dẫn sử dụng</span></div>
+  <section class="gift-section" aria-label="Ưu đãi khi mua thiết bị">
+    <div class="container-site">
+      <div class="gift-layout">
+        <div class="gift-main">
+          <span class="gift-eyebrow">
+            <Gift size={17}/>
+            ƯU ĐÃI DÀNH CHO KHÁCH HÀNG MỚI
+          </span>
+
+          <h2 class="gift-title">
+            <span>Mua thiết bị ngay hôm nay</span>
+              </h2>
+
+          <p class="gift-copy">
+            An Tâm GPS chuẩn bị sẵn SIM Data 4G, tài khoản GPS-ANTAM và kích hoạt
+            trước khi giao để khách hàng có thể sử dụng ngay.
+          </p>
+
+          <div class="gift-cta-row">
+            <a class="gift-primary-btn" href="#san-pham">
+              <Gift size={21}/>
+              NHẬN ƯU ĐÃI NGAY
+            </a>
+
+            <a class="gift-hotline-btn" href="tel:0866306478">
+              <Phone size={21}/>
+              TƯ VẤN: 0866 306 478
+            </a>
+          </div>
+
+          <div class="gift-feature-grid">
+            <article class="gift-feature-card">
+              <span class="gift-feature-icon"><CheckCircle2 size={30}/></span>
+              <div>
+                <h3>Kích hoạt sẵn<br/>trước khi giao</h3>
+                <p>Nhận là dùng ngay</p>
+              </div>
+            </article>
+
+            <article class="gift-feature-card">
+              <span class="gift-feature-icon"><Headphones size={30}/></span>
+              <div>
+                <h3>Hỗ trợ kỹ thuật<br/>tận tâm</h3>
+                <p>Đội ngũ luôn sẵn sàng</p>
+              </div>
+            </article>
+
+            <article class="gift-feature-card">
+              <span class="gift-feature-icon"><ShieldCheck size={30}/></span>
+              <div>
+                <h3>Bảo hành<br/>chính hãng</h3>
+                <p>An tâm sử dụng</p>
+              </div>
+            </article>
+
+            <article class="gift-feature-card">
+              <span class="gift-feature-icon"><Truck size={30}/></span>
+              <div>
+                <h3>Giao hàng<br/>toàn quốc</h3>
+                <p>Nhanh chóng, an toàn</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="gift-trust-row">
+            <span><ShieldCheck size={17}/>Thiết bị chính hãng</span>
+            <span>Dữ liệu bảo mật</span>
+            <span>Hoạt động ổn định 24/7</span>
+          </div>
+        </div>
+
+        <aside class="gift-aside">
+          <div class="gift-card">
+            <span class="gift-ribbon">QUÀ TẶNG</span>
+
+            <div class="gift-visual">
+              <img src="/assets/app/gift-box-antam.png" alt="Hộp quà tặng An Tâm GPS"/>
+            </div>
+
+            <div class="gift-card-content">
+              <h3>BỘ QUÀ TẶNG</h3>
+              <span class="gift-duration">12 THÁNG</span>
+
+              <ul class="gift-list">
+                <li><CheckCircle2 size={20}/>SIM Data 4G</li>
+                <li><CheckCircle2 size={20}/>GPS-ANTAM Premium</li>
+                <li><CheckCircle2 size={20}/>12 tháng sử dụng</li>
+              </ul>
+
+              <div class="gift-divider"></div>
+
+              <div class="gift-price">0<span>đ</span></div>
+              <p class="gift-activation">Đã kích hoạt trước khi giao</p>
+            </div>
+          </div>
+
+          <div class="gift-qr-card">
+            <img src="/assets/app/qr-app.png" alt="QR tải ứng dụng GPS-ANTAM"/>
+            <div>
+              <b>Quét mã tải ứng dụng</b>
+              <p>Dùng camera điện thoại để tải nhanh.</p>
+              <a href="https://www.iopgps.com/" target="_blank" rel="noopener">
+                Mở phiên bản Web <ExternalLink size={15}/>
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
     </div>
   </section>
 
