@@ -1,0 +1,140 @@
+---
+const appStore =
+  "https://apps.apple.com/vn/app/iopgps/id6446336643";
+
+const googlePlay =
+  "https://play.google.com/store/apps/details?id=com.ww.iopgps";
+---
+
+<html lang="vi">
+<head>
+
+<meta charset="UTF-8" />
+
+<title>Tải ứng dụng An Tâm GPS</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+
+const ua=navigator.userAgent;
+
+if(/iPhone|iPad|iPod/i.test(ua)){
+window.location.href="https://apps.apple.com/vn/app/iopgps/id6446336643";
+}
+
+else if(/Android/i.test(ua)){
+window.location.href="https://play.google.com/store/apps/details?id=com.ww.iopgps";
+}
+
+</script>
+
+<style>
+
+body{
+
+font-family:Arial;
+
+background:#ffffff;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+height:100vh;
+
+margin:0;
+
+}
+
+.card{
+
+width:420px;
+
+padding:40px;
+
+text-align:center;
+
+border-radius:20px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.12);
+
+}
+
+.logo{
+
+font-size:32px;
+
+font-weight:700;
+
+color:#0057B8;
+
+}
+
+.green{
+
+color:#39B54A;
+
+}
+
+.btn{
+
+display:block;
+
+margin:15px auto;
+
+padding:14px;
+
+border-radius:12px;
+
+text-decoration:none;
+
+font-weight:600;
+
+color:white;
+
+background:#0057B8;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="logo">
+
+AN TÂM <span class="green">GPS</span>
+
+</div>
+
+<h2>Tải ứng dụng</h2>
+
+<p>
+
+Nếu điện thoại không tự chuyển, hãy chọn cửa hàng bên dưới.
+
+</p>
+
+<a class="btn" href={appStore}>
+
+ App Store
+
+</a>
+
+<a class="btn" href={googlePlay}>
+
+▶ Google Play
+
+</a>
+
+</div>
+
+</body>
+
+</html>
