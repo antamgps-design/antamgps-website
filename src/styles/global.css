@@ -176,10 +176,7 @@ button { font: inherit; }
 .brand-link { min-width: 0; }
 .brand-logo { width: var(--header-logo-width); max-height: var(--header-logo-height); object-fit: contain; object-position: left center; }
 .brand-mobile { display: none; align-items: center; gap: 10px; color: var(--blue-900); }
-.brand-mobile > img { width: 43px; height: 43px; object-fit: contain; }
-.brand-mobile > span { display: grid; line-height: 1; }
-.brand-mobile strong { font-size: 1.07rem; letter-spacing: .055em; }
-.brand-mobile small { margin-top: 6px; color: var(--green-600); font-size: .52rem; font-weight: 800; letter-spacing: .13em; }
+.brand-mobile > img { width: 178px; height: auto; object-fit: contain; object-position: left center; }
 .main-nav { display: flex; align-items: center; gap: 27px; color: #34415b; font-size: .94rem; font-weight: 700; white-space: nowrap; }
 .main-nav a { transition: color .2s ease; }
 .main-nav a:hover { color: var(--blue-600); }
@@ -818,8 +815,6 @@ body.menu-open { overflow: hidden; }
 
 @media (max-width: 390px) {
   :root { --header-logo-width: 175px; --hero-title-size: 2rem; --hero-image-height: 270px; }
-  .brand-mobile > img { width: 39px; height: 39px; }
-  .brand-mobile strong { font-size: .98rem; }
-  .brand-mobile small { font-size: .46rem; }
+  .brand-mobile > img { width: 156px; }
   .hero-actions { grid-template-columns: 1fr; }
 }

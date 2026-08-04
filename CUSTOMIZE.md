@@ -56,11 +56,12 @@ Giữ nguyên tên file để không cần sửa code. Nên xuất WebP nền tr
 
 ## 6. Thay logo
 
-Thay file:
+Bộ nhận diện website dùng hai file:
 
-`public/assets/logo/logo-ngang.png`
+- `public/assets/logo/logo-antam-smart-v31.png`: logo màu cho Header, mobile, favicon và ảnh chia sẻ.
+- `public/assets/logo/logo-antam-smart-white-v31.png`: logo trắng cho Footer.
 
-Giữ nguyên tên file để Header và Footer tự cập nhật.
+Khi thay logo lần sau, nên tạo tên phiên bản mới và cập nhật đường dẫn trong Header, Footer và BaseLayout để tránh trình duyệt giữ ảnh cũ.
 
 ## 7. Chỉnh hotline và liên kết ứng dụng
 
