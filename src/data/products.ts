@@ -15,7 +15,7 @@ export type Product = {
 
 export const products: Product[] = [
   {
-    slug: 'gs12', name: 'GS12', subtitle: 'Thiết bị định vị GPS 4G thông minh', category: 'GPS có dây', image: '/assets/products/gs12.png', gallery: ['/assets/products/gs12-features.png'], badge: 'GPS 4G • IP67',
+    slug: 'gs12', name: 'GS12', subtitle: 'Thiết bị định vị GPS 4G thông minh', category: 'GPS có dây', image: '/assets/products/gs12.webp', gallery: ['/assets/products/gs12-features.webp'], badge: 'GPS 4G • IP67',
     description: 'Theo dõi phương tiện chính xác, phát hiện ACC, cảnh báo rung và hỗ trợ ngắt nhiên liệu hoặc nguồn điện từ xa.',
     highlights: ['GPS/BDS chính xác ≤ 5 m','Điện áp rộng 9–90V','Chống nước IP67','Pin dự phòng 250mAh'],
     features: [
@@ -30,7 +30,7 @@ export const products: Product[] = [
     applications:['Ô tô cá nhân','Taxi','Xe tải','Xe cho thuê','Doanh nghiệp vận tải','Công ty bảo hiểm']
   },
   {
-    slug: 'h29p', name: 'H29P', subtitle: 'Thiết bị định vị GPS 4G siêu nhỏ', category: 'GPS có dây', image: '/assets/products/h29p-clean.png', gallery: ['/assets/products/h29p-overview.png','/assets/products/h29p-specs.png'], badge: 'Sản phẩm chủ lực',
+    slug: 'h29p', name: 'H29P', subtitle: 'Thiết bị định vị GPS 4G siêu nhỏ', category: 'GPS có dây', image: '/assets/products/h29p-clean.webp', gallery: ['/assets/products/h29p-overview.webp','/assets/products/h29p-specs.webp'], badge: 'Sản phẩm chủ lực',
     description: 'Thiết kế nhỏ gọn, dễ giấu kín, định vị nhanh và phù hợp cho xe máy, xe điện lẫn ô tô.',
     highlights: ['Kết nối 4G ổn định','Điện áp 9–90V','Phát hiện ACC','Hỗ trợ OTA'],
     features:[
@@ -45,7 +45,7 @@ export const products: Product[] = [
     applications:['Xe máy','Xe điện','Ô tô','Gara ô tô','Đại lý xe','Gia đình và doanh nghiệp']
   },
   {
-    slug:'s20', name:'S20', subtitle:'Thiết bị định vị GPS 4G không dây', category:'GPS không dây', image:'/assets/products/s20-clean.png', gallery:['/assets/products/s20-overview.png'], badge:'Pin 6000mAh',
+    slug:'s20', name:'S20', subtitle:'Thiết bị định vị GPS 4G không dây', category:'GPS không dây', image:'/assets/products/s20-clean.webp', gallery:['/assets/products/s20-overview.webp'], badge:'Pin 6000mAh',
     description:'Không cần đấu điện, lắp đặt nhanh bằng nam châm và phù hợp theo dõi phương tiện hoặc tài sản linh hoạt.',
     highlights:['Pin lớn 6000mAh','Nam châm siêu mạnh','Cảnh báo tháo gỡ','Sạc lại qua USB'],
     features:[
@@ -53,14 +53,14 @@ export const products: Product[] = [
       {title:'Pin dung lượng lớn',description:'Dung lượng 6000mAh cho thời gian sử dụng dài tùy chế độ cập nhật.'},
       {title:'Nam châm tích hợp',description:'Gắn chắc lên bề mặt kim loại, thuận tiện tháo lắp và di chuyển.'},
       {title:'Cảnh báo tháo gỡ',description:'Cảm biến hỗ trợ phát hiện khi thiết bị bị tác động hoặc tháo khỏi vị trí.'},
-      {title:'Theo dõi thời gian thực',description:'Cập nhật vị trí định kỳ trực tiếp trên ứng dụng GPS-ANTAM.'},
+      {title:'Theo dõi thời gian thực',description:'Cập nhật vị trí định kỳ trực tiếp trên ứng dụng IOPGPS.'},
       {title:'Sạc USB',description:'Nạp lại pin dễ dàng bằng cáp sạc đi kèm.'}
     ],
     specs:[{label:'Loại thiết bị',value:'GPS 4G không dây'},{label:'Dung lượng pin',value:'6000mAh'},{label:'Lắp đặt',value:'Nam châm tích hợp'},{label:'Sạc',value:'Cổng USB'},{label:'Kết nối',value:'4G / GPS'},{label:'Bảo hành',value:'12 tháng'}],
     applications:['Xe máy','Ô tô','Xe tải','Taxi','Hàng hóa','Tài sản cần theo dõi']
   },
   {
-    slug:'ev04', name:'EV04', subtitle:'Thiết bị định vị GPS 4G thế hệ mới', category:'GPS có dây', image:'/assets/products/ev04clean.png', gallery:['/assets/products/ev04-overview.png'], badge:'Nhỏ gọn • Chính xác',
+    slug:'ev04', name:'EV04', subtitle:'Thiết bị định vị GPS 4G thế hệ mới', category:'GPS có dây', image:'/assets/products/ev04clean.webp', gallery:['/assets/products/ev04-overview.webp'], badge:'Nhỏ gọn • Chính xác',
     description:'Thiết bị phổ thông nhỏ gọn, kết nối 4G ổn định và hoạt động với dải điện áp rộng cho nhiều loại phương tiện.',
     highlights:['Độ chính xác ≤ 5 m','Điện áp 9–90V','Pin dự phòng 55mAh','Hỗ trợ OTA'],
     features:[

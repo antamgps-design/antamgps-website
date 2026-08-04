@@ -1,140 +1,35 @@
 ---
-const appStore =
-  "https://apps.apple.com/vn/app/iopgps/id6446336643";
-
-const googlePlay =
-  "https://play.google.com/store/apps/details?id=com.ww.iopgps";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactDock from '../components/ContactDock.astro';
+import { appLinks } from '../data/site';
+import { Download, ExternalLink, MonitorSmartphone, ShieldCheck, Smartphone } from 'lucide-astro';
 ---
 
-<html lang="vi">
-<head>
-
-<meta charset="UTF-8" />
-
-<title>Tải ứng dụng An Tâm GPS</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<script>
-
-const ua=navigator.userAgent;
-
-if(/iPhone|iPad|iPod/i.test(ua)){
-window.location.href="https://apps.apple.com/vn/app/iopgps/id6446336643";
-}
-
-else if(/Android/i.test(ua)){
-window.location.href="https://play.google.com/store/apps/details?id=com.ww.iopgps";
-}
-
-</script>
-
-<style>
-
-body{
-
-font-family:Arial;
-
-background:#ffffff;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-height:100vh;
-
-margin:0;
-
-}
-
-.card{
-
-width:420px;
-
-padding:40px;
-
-text-align:center;
-
-border-radius:20px;
-
-box-shadow:0 10px 30px rgba(0,0,0,.12);
-
-}
-
-.logo{
-
-font-size:32px;
-
-font-weight:700;
-
-color:#0057B8;
-
-}
-
-.green{
-
-color:#39B54A;
-
-}
-
-.btn{
-
-display:block;
-
-margin:15px auto;
-
-padding:14px;
-
-border-radius:12px;
-
-text-decoration:none;
-
-font-weight:600;
-
-color:white;
-
-background:#0057B8;
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="card">
-
-<div class="logo">
-
-AN TÂM <span class="green">GPS</span>
-
-</div>
-
-<h2>Tải ứng dụng</h2>
-
-<p>
-
-Nếu điện thoại không tự chuyển, hãy chọn cửa hàng bên dưới.
-
-</p>
-
-<a class="btn" href={appStore}>
-
- App Store
-
-</a>
-
-<a class="btn" href={googlePlay}>
-
-▶ Google Play
-
-</a>
-
-</div>
-
-</body>
-
-</html>
+<BaseLayout title="Tải ứng dụng IOPGPS | An Tâm GPS" description="Tải IOPGPS cho iPhone, iPad và Android hoặc sử dụng trực tiếp trên trình duyệt Web." noindex={true}>
+  <Header />
+  <main id="app-redirect" class="app-landing" data-ios={appLinks.appStore} data-android={appLinks.googlePlay}>
+    <section class="app-landing-section"><div class="container-site app-landing-grid">
+      <div class="app-landing-copy"><span class="eyebrow">TẢI ỨNG DỤNG IOPGPS</span><h1>Chọn đúng phiên bản cho thiết bị của bạn.</h1><p>Điện thoại iOS hoặc Android sẽ tự chuyển tới cửa hàng phù hợp. Nếu không tự chuyển, chọn một nút bên dưới.</p>
+        <div id="redirect-status" class="redirect-status" role="status" aria-live="polite" hidden><span class="status-dot"></span> Đang mở cửa hàng ứng dụng phù hợp…</div>
+        <div class="store-buttons store-buttons-large"><a class="store-button" href={appLinks.appStore} target="_blank" rel="noopener"><Download size={21} /><span><small>Tải trên</small>App Store</span></a><a class="store-button" href={appLinks.googlePlay} target="_blank" rel="noopener"><Download size={21} /><span><small>Tải trên</small>Google Play</span></a><a class="store-button store-button-light" href={appLinks.web} target="_blank" rel="noopener"><ExternalLink size={21} /><span><small>Sử dụng trên</small>Trình duyệt Web</span></a></div>
+        <div class="app-trust-note"><ShieldCheck size={20} /><span>An Tâm GPS thiết lập tài khoản và hỗ trợ sử dụng cho thiết bị được bàn giao.</span></div>
+      </div>
+      <div class="app-landing-card"><div class="app-landing-icon"><MonitorSmartphone size={54} /></div><h2>IOPGPS</h2><p>Theo dõi vị trí, lịch sử hành trình và cảnh báo theo tính năng của thiết bị.</p><img src="/assets/app/qrcodeiopgps.svg" alt="QR tải IOPGPS" width="270" height="270" /><span><Smartphone size={17} /> Dùng một mã QR cho iOS và Android</span></div>
+    </div></section>
+  </main>
+  <Footer /><ContactDock />
+  <script is:inline>
+    const root = document.getElementById('app-redirect');
+    const status = document.getElementById('redirect-status');
+    const userAgent = navigator.userAgent || '';
+    const params = new URLSearchParams(window.location.search);
+    const iosUrl = root?.dataset.ios;
+    const androidUrl = root?.dataset.android;
+    let target = '';
+    if (/iPhone|iPad|iPod/i.test(userAgent)) target = iosUrl || '';
+    if (/Android/i.test(userAgent)) target = androidUrl || '';
+    if (target && !params.has('stay')) { if (status) status.hidden = false; window.setTimeout(() => window.location.assign(target), 450); }
+  </script>
+</BaseLayout>

@@ -4,6 +4,10 @@ Các thiết lập thường dùng nằm ở đầu file:
 
 `src/styles/global.css`
 
+CSS riêng cho cụm trang IOPGPS, tải xuống, hướng dẫn và sản phẩm nằm tại:
+
+`src/styles/pages-v3.css`
+
 ## 1. Chỉnh kích thước logo Header
 
 ```css
@@ -46,9 +50,9 @@ Ví dụ:
 
 Thay file:
 
-`public/assets/app/hero-phone-h29p.png`
+`public/assets/app/hero-phone-h29p.webp`
 
-Giữ nguyên tên file để không cần sửa code. Nên dùng PNG đã xóa nền.
+Giữ nguyên tên file để không cần sửa code. Nên xuất WebP nền trong suốt, cạnh dài khoảng 1200 px.
 
 ## 6. Thay logo
 
@@ -58,7 +62,15 @@ Thay file:
 
 Giữ nguyên tên file để Header và Footer tự cập nhật.
 
-## 7. Chỉnh khoảng cách Hero
+## 7. Chỉnh hotline và liên kết ứng dụng
+
+Chỉnh tại:
+
+`src/data/site.ts`
+
+File này quản lý một lần cho Header, Footer, CTA, Zalo, App Store, Google Play và IOPGPS Web.
+
+## 8. Chỉnh khoảng cách Hero
 
 ```css
 --hero-padding-top: 54px;

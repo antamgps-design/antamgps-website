@@ -36,9 +36,9 @@
   --section-copy-size: clamp(17px, 1.1vw, 19px);
 
   /* Header — chỉnh logo tại đây */
-  --header-height: 100px;
-  --header-logo-width: 300px;
-  --header-logo-height: 100px;
+  --header-height: 88px;
+  --header-logo-width: 228px;
+  --header-logo-height: 64px;
 
   /* Hero — chỉnh chữ và ảnh tại đây */
   --hero-padding-top: 54px;
@@ -173,7 +173,13 @@ button { font: inherit; }
 .site-header { position: sticky; top: 0; z-index: 60; background: rgba(255, 255, 255, .98); border-bottom: 1px solid #e5edf7; box-shadow: 0 4px 18px rgba(8, 35, 82, .05); }
 .header-row { height: var(--header-height); display: flex; align-items: center; justify-content: space-between; gap: 28px; }
 .header-row > a:first-child { display: flex; align-items: center; flex: 0 0 auto; }
+.brand-link { min-width: 0; }
 .brand-logo { width: var(--header-logo-width); max-height: var(--header-logo-height); object-fit: contain; object-position: left center; }
+.brand-mobile { display: none; align-items: center; gap: 10px; color: var(--blue-900); }
+.brand-mobile > img { width: 43px; height: 43px; object-fit: contain; }
+.brand-mobile > span { display: grid; line-height: 1; }
+.brand-mobile strong { font-size: 1.07rem; letter-spacing: .055em; }
+.brand-mobile small { margin-top: 6px; color: var(--green-600); font-size: .52rem; font-weight: 800; letter-spacing: .13em; }
 .main-nav { display: flex; align-items: center; gap: 27px; color: #34415b; font-size: .94rem; font-weight: 700; white-space: nowrap; }
 .main-nav a { transition: color .2s ease; }
 .main-nav a:hover { color: var(--blue-600); }
@@ -181,6 +187,7 @@ button { font: inherit; }
 .hotline { display: inline-flex; align-items: center; gap: 8px; color: var(--blue-900); font-size: .94rem; font-weight: 800; white-space: nowrap; }
 .mobile-trigger { display: none; width: 44px; height: 44px; place-items: center; padding: 0; color: var(--blue-900); background: #fff; border: 1px solid var(--line); border-radius: 12px; }
 .mobile-menu { display: none; }
+body.menu-open { overflow: hidden; }
 
 /* ================= HERO — CHỈ MỘT NHÓM CSS ================= */
 .hero { position: relative; isolation: isolate; overflow: hidden; padding: var(--hero-padding-top) 0 var(--hero-padding-bottom); color: #fff; background: linear-gradient(115deg, #06225a 0%, #0a3e91 55%, #0875bd 100%); }
@@ -516,10 +523,10 @@ button { font: inherit; }
 
 .gift-price {
   color: #238a2d;
-  font-size: clamp(4rem, 6vw, 6.2rem);
+  font-size: clamp(1.7rem, 3vw, 2.7rem);
   font-weight: 900;
-  line-height: .9;
-  letter-spacing: -.07em;
+  line-height: 1;
+  letter-spacing: -.035em;
 }
 
 .gift-price span {
@@ -532,6 +539,14 @@ button { font: inherit; }
   margin: 11px 0 0;
   color: #59677d;
   font-size: .8rem;
+}
+
+.gift-renewal {
+  max-width: 290px;
+  margin: 8px auto 0;
+  color: #6d7788;
+  font-size: .72rem;
+  line-height: 1.5;
 }
 
 .gift-qr-card {
@@ -655,7 +670,7 @@ button { font: inherit; }
 /* ================= RESPONSIVE ================= */
 @media (max-width: 1120px) {
   :root {
-    --header-logo-width: 245px;
+    --header-logo-width: 205px;
     --header-logo-height: 60px;
     --section-title-size: clamp(34px, 4.6vw, 46px);
   }
@@ -671,6 +686,10 @@ button { font: inherit; }
   :root { --header-height: 80px; --header-logo-width: 235px; --header-logo-height: 58px; --hero-padding-top: 42px; --hero-padding-bottom: 34px; --hero-image-height: 390px; }
   .main-nav, .header-actions { display: none; }
   .mobile-trigger { display: grid; }
+  .mobile-menu.open { position: fixed; inset: 0; z-index: 100; display: block; padding: 20px; background: #fff; }
+  .mobile-menu-head { display: flex; align-items: center; justify-content: space-between; }
+  .mobile-menu nav { display: grid; margin-top: 28px; border-top: 1px solid var(--line); }
+  .mobile-menu nav a { padding: 17px 4px; color: var(--blue-950); border-bottom: 1px solid var(--line); font-size: 1.05rem; font-weight: 800; }
   .hero-grid { grid-template-columns: 1fr; grid-template-areas: "intro" "visual" "bottom"; gap: 22px; min-height: 0; }
   .hero-intro { align-self: auto; text-align: center; }
   .hero-copy { margin-inline: auto; max-width: 680px; }
@@ -697,7 +716,7 @@ button { font: inherit; }
     --container-gutter: 28px;
     --section-space: 70px;
     --header-height: 76px;
-    --header-logo-width: 205px;
+    --header-logo-width: 195px;
     --header-logo-height: 50px;
     --hero-padding-top: 32px;
     --hero-padding-bottom: 28px;
@@ -743,10 +762,8 @@ button { font: inherit; }
   }
 
   .mobile-trigger { width: 42px; height: 42px; }
-  .mobile-menu.open { position: fixed; inset: 0; z-index: 100; display: block; padding: 18px; background: #fff; }
-  .mobile-menu-head { display: flex; align-items: center; justify-content: space-between; }
-  .mobile-menu nav { display: grid; margin-top: 28px; border-top: 1px solid var(--line); }
-  .mobile-menu nav a { padding: 17px 4px; color: var(--blue-950); border-bottom: 1px solid var(--line); font-size: 1.05rem; font-weight: 800; }
+  .brand-logo-desktop { display: none; }
+  .brand-mobile { display: flex; }
   .hero-grid { gap: 18px; }
   .hero-intro { text-align: left; }
   .hero-chip { max-width: 100%; padding: 8px 12px; font-size: .66rem; line-height: 1.35; letter-spacing: .09em; text-align: center; }
@@ -800,6 +817,9 @@ button { font: inherit; }
 }
 
 @media (max-width: 390px) {
-  :root { --header-logo-width: 185px; --hero-title-size: 2rem; --hero-image-height: 270px; }
+  :root { --header-logo-width: 175px; --hero-title-size: 2rem; --hero-image-height: 270px; }
+  .brand-mobile > img { width: 39px; height: 39px; }
+  .brand-mobile strong { font-size: .98rem; }
+  .brand-mobile small { font-size: .46rem; }
   .hero-actions { grid-template-columns: 1fr; }
 }

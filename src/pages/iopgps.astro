@@ -1,4 +1,45 @@
 ---
-import Base from '../layouts/Base.astro'; import Header from '../components/Header.astro'; import Footer from '../components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactDock from '../components/ContactDock.astro';
+import { appLinks, contact } from '../data/site';
+import { BellRing, CheckCircle2, Download, ExternalLink, Layers3, MapPin, MonitorSmartphone, Phone, Route, ShieldCheck } from 'lucide-astro';
+
+const features = [
+  [MapPin, 'Theo dõi trực tuyến', 'Xem vị trí và trạng thái phương tiện trực tiếp trên bản đồ.'],
+  [Route, 'Lịch sử hành trình', 'Kiểm tra tuyến đường, thời gian và tốc độ đã di chuyển.'],
+  [BellRing, 'Cảnh báo thông minh', 'Nhận thông báo theo tính năng được hỗ trợ trên từng thiết bị.'],
+  [ShieldCheck, 'Hàng rào điện tử', 'Thiết lập khu vực và theo dõi khi phương tiện ra hoặc vào vùng đã chọn.'],
+  [Layers3, 'Quản lý nhiều thiết bị', 'Theo dõi nhiều phương tiện trong cùng một tài khoản thuận tiện.'],
+  [MonitorSmartphone, 'Web và điện thoại', 'Sử dụng trên iOS, Android hoặc trình duyệt máy tính.'],
+];
 ---
-<Base title="Ứng dụng IOPGPS — An Tâm GPS"><Header/><main><section class="page-hero"><div class="wrap"><span class="eyebrow">ỨNG DỤNG IOPGPS</span><h1>Một ứng dụng quản lý toàn bộ thiết bị.</h1><p>Theo dõi vị trí, lịch sử hành trình, cảnh báo, hàng rào điện tử và báo cáo.</p></div></section><section class="section"><div class="wrap app-grid"><div class="feature-list"><div>✓ Theo dõi thời gian thực</div><div>✓ Lịch sử hành trình</div><div>✓ Cảnh báo rung, khởi động, tắt máy</div><div>✓ Hàng rào điện tử</div><div>✓ Quản lý nhiều thiết bị</div><div>✓ Truy cập Web/App</div></div><div class="qr-panel"><img src="/assets/app/qrcodeiopgps.svg" alt="QR tải IOPGPS"/><p>Quét mã để tải ứng dụng</p></div></div></section><section class="section soft"><div class="wrap media"><h2>Video mô tả ứng dụng</h2><video controls src="/assets/app/demo.mp4"></video></div></section></main><Footer/></Base>
+
+<BaseLayout title="Ứng dụng IOPGPS | Theo dõi phương tiện cùng An Tâm GPS" description="Theo dõi vị trí, lịch sử hành trình, cảnh báo và quản lý nhiều thiết bị trên IOPGPS. An Tâm GPS thiết lập tài khoản và hỗ trợ sử dụng.">
+  <Header />
+  <main>
+    <section class="subpage-hero subpage-hero-dark"><div class="container-site subpage-hero-grid">
+      <div class="subpage-copy">
+        <span class="eyebrow eyebrow-on-dark">ỨNG DỤNG IOPGPS</span><h1>Một ứng dụng quản lý toàn bộ thiết bị.</h1>
+        <p>Theo dõi vị trí, xem lại hành trình, nhận cảnh báo và quản lý nhiều phương tiện trên điện thoại hoặc máy tính.</p>
+        <div class="subpage-actions"><a class="btn btn-green" href={appLinks.smartDownload}><Download size={19} /> Tải IOPGPS</a><a class="btn hero-secondary" href={appLinks.web} target="_blank" rel="noopener">Mở bản Web <ExternalLink size={17} /></a></div>
+        <div class="provider-note"><CheckCircle2 size={20} /><span><b>Minh bạch nền tảng:</b> IOPGPS là ứng dụng quản lý được sử dụng cùng thiết bị; An Tâm GPS thiết lập tài khoản và hỗ trợ khách hàng sử dụng.</span></div>
+      </div>
+      <div class="app-hero-visual">
+        <img src="/assets/app/app-phone.webp" alt="Giao diện ứng dụng IOPGPS trên điện thoại" width="894" height="1500" fetchpriority="high" />
+        <a class="floating-qr" href={appLinks.smartDownload} aria-label="Mở trang tải IOPGPS"><img src="/assets/app/qrcodeiopgps.svg" alt="QR tải IOPGPS" width="270" height="270" /><span><b>Quét để tải</b><small>Tự nhận diện iOS/Android</small></span></a>
+      </div>
+    </div></section>
+    <section class="section"><div class="container-site">
+      <div class="section-intro"><span class="eyebrow">TÍNH NĂNG CHÍNH</span><h2 class="h2">Thông tin cần thiết luôn nằm trong tầm tay.</h2><p class="lead">Tính năng hiển thị phụ thuộc vào model thiết bị và cấu hình tài khoản được bàn giao.</p></div>
+      <div class="feature-grid app-feature-grid">{features.map(([Icon, title, description]) => <article class="card feature-card"><div class="icon-box"><Icon size={27} /></div><h3>{title}</h3><p>{description}</p></article>)}</div>
+    </div></section>
+    <section class="section section-soft"><div class="container-site setup-layout">
+      <div><span class="eyebrow eyebrow-green">BẮT ĐẦU NHANH</span><h2 class="h2">Nhận thiết bị là có thể sử dụng.</h2><p class="lead">An Tâm GPS chuẩn bị SIM, tài khoản và hướng dẫn trước khi bàn giao.</p><a class="text-link inline-arrow" href="/huong-dan/">Xem trung tâm hướng dẫn →</a></div>
+      <ol class="numbered-steps"><li><span>01</span><div><b>Nhận tài khoản</b><p>Thông tin đăng nhập được gửi cùng thiết bị đã kích hoạt.</p></div></li><li><span>02</span><div><b>Tải IOPGPS</b><p>Quét một mã QR để tự mở đúng cửa hàng ứng dụng.</p></div></li><li><span>03</span><div><b>Đăng nhập và kiểm tra</b><p>Xác nhận vị trí, trạng thái và cảnh báo theo thiết bị.</p></div></li></ol>
+    </div></section>
+    <section class="section compact-section"><div class="container-site cta-band"><div><h3>Cần hỗ trợ cài đặt hoặc đăng nhập IOPGPS?</h3><p>Gọi An Tâm GPS để được hướng dẫn theo đúng model thiết bị đang sử dụng.</p></div><div class="cta-actions"><a class="btn btn-green" href={`tel:${contact.hotlineTel}`}><Phone size={18} /> {contact.hotlineDisplay}</a><a class="btn hero-secondary" href="/tai-xuong/">Tải ứng dụng & tài liệu</a></div></div></section>
+  </main>
+  <Footer /><ContactDock />
+</BaseLayout>

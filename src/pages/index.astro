@@ -2,11 +2,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ContactDock from '../components/ContactDock.astro';
 import ProductCard from '../components/ProductCard.astro';
 import { products } from '../data/products';
+import { appLinks, contact } from '../data/site';
 import { MapPin, BellRing, Route, ShieldCheck, Smartphone, Headphones, CheckCircle2, RadioTower, BadgeCheck, ExternalLink, Gift, Phone, Truck } from 'lucide-astro';
 ---
-<BaseLayout title="An Tâm GPS — Định vị chính xác, an tâm mọi hành trình" description="Thiết bị định vị GPS 4G, ứng dụng GPS-ANTAM, SIM data và hỗ trợ kỹ thuật toàn diện.">
+<BaseLayout title="An Tâm GPS — Định vị chính xác, an tâm mọi hành trình" description="Thiết bị định vị GPS 4G, ứng dụng IOPGPS, SIM data và hỗ trợ kỹ thuật toàn diện.">
 <Header />
 <main>
   <section class="hero">
@@ -22,12 +24,12 @@ import { MapPin, BellRing, Route, ShieldCheck, Smartphone, Headphones, CheckCirc
     An tâm mọi hành trình.
   </span>
 </h1>
-        <p class="hero-copy">Theo dõi phương tiện theo thời gian thực, nhận cảnh báo thông minh và quản lý nhiều thiết bị trên ứng dụng GPS-ANTAM.</p>
+        <p class="hero-copy">Theo dõi phương tiện theo thời gian thực, nhận cảnh báo thông minh và quản lý nhiều thiết bị trên ứng dụng IOPGPS.</p>
       </div>
 
       <div class="hero-visual">
         <div class="hero-glow"></div>
-        <img class="hero-composition" src="/assets/app/hero-phone-h29p.png" alt="Điện thoại hiển thị ứng dụng GPS-ANTAM và thiết bị H29P" />
+        <img class="hero-composition" src="/assets/app/hero-phone-h29p.webp" alt="Điện thoại hiển thị ứng dụng IOPGPS và thiết bị H29P" width="1200" height="1200" fetchpriority="high" />
       </div>
 
       <div class="hero-bottom">
@@ -37,7 +39,7 @@ import { MapPin, BellRing, Route, ShieldCheck, Smartphone, Headphones, CheckCirc
           <div><b>Bảo vệ 24/7</b><span>Cảnh báo tức thời</span></div>
           <div><b>Pin dự phòng</b><span>Hoạt động liên tục</span></div>
         </div>
-        <div class="hero-actions"><a class="btn btn-green" href="#san-pham">Khám phá sản phẩm</a><a class="btn hero-secondary" href="#ung-dung">Xem ứng dụng</a></div>
+        <div class="hero-actions"><a class="btn btn-green" href="#san-pham">Khám phá sản phẩm</a><a class="btn hero-secondary" href="/iopgps/">Xem ứng dụng</a></div>
       </div>
     </div>
   </section>
@@ -52,12 +54,12 @@ import { MapPin, BellRing, Route, ShieldCheck, Smartphone, Headphones, CheckCirc
           </span>
 
           <h2 class="gift-title">
-            <span>Mua thiết bị ngay hôm nay</span>
+            <span>Mua thiết bị, nhận ngay bộ quà tặng 12 tháng.</span>
               </h2>
 
           <p class="gift-copy">
-            An Tâm GPS chuẩn bị sẵn SIM Data 4G, tài khoản GPS-ANTAM và kích hoạt
-            trước khi giao để khách hàng có thể sử dụng ngay.
+            Tặng 12 tháng SIM Data 4G và 12 tháng sử dụng IOPGPS. An Tâm GPS thiết lập
+            tài khoản, kích hoạt sẵn và hướng dẫn sử dụng trước khi giao.
           </p>
 
           <div class="gift-cta-row">
@@ -66,9 +68,9 @@ import { MapPin, BellRing, Route, ShieldCheck, Smartphone, Headphones, CheckCirc
               NHẬN ƯU ĐÃI NGAY
             </a>
 
-            <a class="gift-hotline-btn" href="tel:0866306478">
+            <a class="gift-hotline-btn" href={`tel:${contact.hotlineTel}`}>
               <Phone size={21}/>
-              TƯ VẤN: 0866 306 478
+              TƯ VẤN: {contact.hotlineDisplay}
             </a>
           </div>
 
@@ -118,7 +120,7 @@ import { MapPin, BellRing, Route, ShieldCheck, Smartphone, Headphones, CheckCirc
             <span class="gift-ribbon">QUÀ TẶNG</span>
 
             <div class="gift-visual">
-              <img src="/assets/app/gift-box-antam.png" alt="Hộp quà tặng An Tâm GPS"/>
+              <img src="/assets/app/gift-box-antam.webp" alt="Hộp quà tặng An Tâm GPS" width="800" height="533" loading="lazy" decoding="async"/>
             </div>
 
             <div class="gift-card-content">
@@ -127,23 +129,24 @@ import { MapPin, BellRing, Route, ShieldCheck, Smartphone, Headphones, CheckCirc
 
               <ul class="gift-list">
                 <li><CheckCircle2 size={20}/>SIM Data 4G</li>
-                <li><CheckCircle2 size={20}/>GPS-ANTAM Premium</li>
-                <li><CheckCircle2 size={20}/>12 tháng sử dụng</li>
+                <li><CheckCircle2 size={20}/>Ứng dụng IOPGPS</li>
+                <li><CheckCircle2 size={20}/>Tặng kèm 12 tháng</li>
               </ul>
 
               <div class="gift-divider"></div>
 
-              <div class="gift-price">0<span>đ</span></div>
+              <div class="gift-price">TẶNG KÈM</div>
               <p class="gift-activation">Đã kích hoạt trước khi giao</p>
+              <p class="gift-renewal">Từ năm thứ hai áp dụng phí duy trì theo chính sách tại thời điểm gia hạn.</p>
             </div>
           </div>
 
           <div class="gift-qr-card">
-            <img src="/assets/app/qrcodeiopgps.svg" alt="QR tải ứng dụng GPS-ANTAM"/>
+            <a href={appLinks.smartDownload} aria-label="Mở trang tải ứng dụng IOPGPS"><img src="/assets/app/qrcodeiopgps.svg" alt="QR tải ứng dụng IOPGPS" width="270" height="270" loading="lazy"/></a>
             <div>
               <b>Quét mã tải ứng dụng</b>
               <p>Dùng camera điện thoại để tải nhanh.</p>
-              <a href="https://www.iopgps.com/" target="_blank" rel="noopener">
+              <a href={appLinks.web} target="_blank" rel="noopener">
                 Mở phiên bản Web <ExternalLink size={15}/>
               </a>
             </div>
@@ -166,19 +169,20 @@ import { MapPin, BellRing, Route, ShieldCheck, Smartphone, Headphones, CheckCirc
   </div></section>
 
   <section class="section" id="ung-dung"><div class="container-site app-grid">
-    <div class="app-image-wrap"><img src="/assets/app/app-phone.png" alt="Ứng dụng GPS-ANTAM hiển thị trên điện thoại" class="app-image"/></div>
-    <div><span class="eyebrow">ỨNG DỤNG GPS-ANTAM</span><h2 class="h2">Quản lý mọi lúc, trên mọi thiết bị.</h2><p class="lead">Theo dõi vị trí, xem lịch sử, nhận cảnh báo và quản lý nhiều phương tiện trong cùng một tài khoản đơn giản, trực quan.</p>
-      <div class="check-list">{['Miễn phí SIM Data trong 12 tháng đầu','Miễn phí sử dụng ứng dụng trong 12 tháng đầu','Kích hoạt sẵn trước khi giao','Hỗ trợ cài đặt và hướng dẫn sử dụng'].map(item=><div class="check-row"><CheckCircle2 size={22}/><span>{item}</span></div>)}</div>
-      <div class="app-download-row"><img src="/assets/app/qrcodeiopgps.svg" alt="QR tải ứng dụng"/><div><b>Quét mã để tải ứng dụng</b><span>Dùng camera điện thoại để quét mã QR.</span><a class="web-app-link" href="https://www.iopgps.com/" target="_blank" rel="noopener">Mở ứng dụng trên Web <ExternalLink size={16}/></a></div></div>
-      <div class="app-actions"><a class="btn btn-primary" href="#lien-he">Nhận tư vấn</a><a class="btn btn-ghost" href="https://www.iopgps.com/" target="_blank" rel="noopener">Sử dụng trên Web</a></div>
+    <div class="app-image-wrap"><img src="/assets/app/app-phone.webp" alt="Ứng dụng IOPGPS hiển thị trên điện thoại" class="app-image" width="894" height="1500" loading="lazy" decoding="async"/></div>
+    <div><span class="eyebrow">ỨNG DỤNG IOPGPS</span><h2 class="h2">Quản lý mọi lúc, trên mọi thiết bị.</h2><p class="lead">Theo dõi vị trí, xem lịch sử, nhận cảnh báo và quản lý nhiều phương tiện trong cùng một tài khoản đơn giản, trực quan.</p>
+      <div class="check-list">{['Tặng SIM Data trong 12 tháng đầu','Tặng quyền sử dụng IOPGPS trong 12 tháng đầu','Kích hoạt sẵn trước khi giao','Hỗ trợ cài đặt và hướng dẫn sử dụng'].map(item=><div class="check-row"><CheckCircle2 size={22}/><span>{item}</span></div>)}</div>
+      <div class="app-download-row"><a href={appLinks.smartDownload} aria-label="Mở trang tải IOPGPS"><img src="/assets/app/qrcodeiopgps.svg" alt="QR tải ứng dụng" width="270" height="270" loading="lazy"/></a><div><b>Quét mã để tải ứng dụng</b><span>Mã QR tự chuyển tới App Store hoặc Google Play theo điện thoại.</span><a class="web-app-link" href={appLinks.web} target="_blank" rel="noopener">Mở ứng dụng trên Web <ExternalLink size={16}/></a></div></div>
+      <div class="app-actions"><a class="btn btn-primary" href="/iopgps/">Tìm hiểu IOPGPS</a><a class="btn btn-ghost" href="/tai-xuong/">Tải ứng dụng & tài liệu</a></div>
     </div>
   </div></section>
 
   <section class="section section-soft" id="ho-tro"><div class="container-site">
     <div class="section-intro"><span class="eyebrow">HỆ SINH THÁI AN TÂM GPS</span><h2 class="h2">Thiết bị, SIM, ứng dụng và hỗ trợ trong một giải pháp.</h2><p class="lead">Khách hàng không phải tự tìm từng dịch vụ rời rạc. Mọi thành phần được chuẩn bị đồng bộ để thiết bị hoạt động ổn định ngay khi nhận.</p></div>
-    <div class="ecosystem-grid">{[[RadioTower,'SIM 4G tặng kèm','Kết nối dữ liệu được chuẩn bị và kích hoạt sẵn.'],[Smartphone,'Ứng dụng GPS-ANTAM','Giao diện trực quan trên điện thoại và nền tảng Web.'],[BadgeCheck,'Bảo hành 12 tháng','Chính sách rõ ràng, hỗ trợ nhanh khi thiết bị có lỗi.'],[Headphones,'Hỗ trợ kỹ thuật','Tư vấn lắp đặt, cài ứng dụng và sử dụng tận tâm.']].map(([Icon,title,desc])=><article class="card ecosystem-card"><div class="icon-box"><Icon size={27}/></div><h3>{title}</h3><p>{desc}</p></article>)}</div>
-    <div class="cta-band"><div><h3>Cần chọn thiết bị phù hợp cho phương tiện?</h3><p>Đội ngũ An Tâm GPS tư vấn đúng nhu cầu, đúng loại xe và đúng phương án lắp đặt.</p></div><a class="btn btn-green" href="tel:0866306478">Gọi 0866 306 478</a></div>
+    <div class="ecosystem-grid">{[[RadioTower,'SIM 4G tặng kèm','Kết nối dữ liệu được chuẩn bị và kích hoạt sẵn.'],[Smartphone,'Ứng dụng IOPGPS','Giao diện trực quan trên điện thoại và nền tảng Web.'],[BadgeCheck,'Bảo hành 12 tháng','Chính sách rõ ràng, hỗ trợ nhanh khi thiết bị có lỗi.'],[Headphones,'Hỗ trợ kỹ thuật','Tư vấn lắp đặt, cài ứng dụng và sử dụng tận tâm.']].map(([Icon,title,desc])=><article class="card ecosystem-card"><div class="icon-box"><Icon size={27}/></div><h3>{title}</h3><p>{desc}</p></article>)}</div>
+    <div class="cta-band"><div><h3>Cần chọn thiết bị phù hợp cho phương tiện?</h3><p>Đội ngũ An Tâm GPS tư vấn đúng nhu cầu, đúng loại xe và đúng phương án lắp đặt.</p></div><a class="btn btn-green" href={`tel:${contact.hotlineTel}`}>Gọi {contact.hotlineDisplay}</a></div>
   </div></section>
 </main>
 <Footer />
+<ContactDock />
 </BaseLayout>

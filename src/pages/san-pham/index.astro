@@ -2,10 +2,15 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import ContactDock from '../../components/ContactDock.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import { products } from '../../data/products';
+import { contact } from '../../data/site';
+import { CheckCircle2, Phone } from 'lucide-astro';
 ---
 <BaseLayout title="Sản phẩm GPS 4G | An Tâm GPS" description="Danh mục thiết bị định vị GPS 4G có dây và không dây của An Tâm GPS."><Header/><main>
 <section class="product-hero"><div class="container-site" style="text-align:center;max-width:900px"><span class="eyebrow">DANH MỤC SẢN PHẨM</span><h1 class="h2">Thiết bị định vị cho từng nhu cầu sử dụng.</h1><p class="lead">Từ GPS có dây theo dõi liên tục đến thiết bị pin lớn không cần đấu điện, mỗi sản phẩm được lựa chọn để phù hợp với điều kiện sử dụng thực tế.</p></div></section>
 <section class="section"><div class="container-site"><div class="product-grid">{products.map(product=><ProductCard product={product}/>)}</div></div></section>
-</main><Footer/></BaseLayout>
+<section class="section section-soft"><div class="container-site choose-product-grid"><div><span class="eyebrow eyebrow-green">CHỌN NHANH</span><h2 class="h2">Có dây hay không dây?</h2><p class="lead">Chọn theo tần suất cần cập nhật vị trí, điều kiện lắp đặt và cách sử dụng phương tiện.</p></div><div class="choose-product-cards"><article class="card"><h3>GPS có dây</h3><ul><li><CheckCircle2 size={19}/>Theo dõi liên tục bằng nguồn xe</li><li><CheckCircle2 size={19}/>Phù hợp phương tiện sử dụng thường xuyên</li><li><CheckCircle2 size={19}/>Nên lắp bởi kỹ thuật viên</li></ul></article><article class="card"><h3>GPS không dây</h3><ul><li><CheckCircle2 size={19}/>Không cần đấu vào điện xe</li><li><CheckCircle2 size={19}/>Dễ thay đổi vị trí lắp đặt</li><li><CheckCircle2 size={19}/>Cần sạc pin định kỳ</li></ul></article></div></div></section>
+<section class="section compact-section"><div class="container-site cta-band"><div><h3>Chưa biết model nào phù hợp?</h3><p>Cho An Tâm GPS biết loại xe và nhu cầu sử dụng để được tư vấn đúng thiết bị.</p></div><a class="btn btn-green" href={`tel:${contact.hotlineTel}`}><Phone size={18}/>Gọi {contact.hotlineDisplay}</a></div></section>
+</main><Footer/><ContactDock /></BaseLayout>

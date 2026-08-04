@@ -1,4 +1,25 @@
 ---
-import Base from '../layouts/Base.astro'; import Header from '../components/Header.astro'; import Footer from '../components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactDock from '../components/ContactDock.astro';
+import { appLinks, contact } from '../data/site';
+import { Download, ExternalLink, FileText, MessageCircle, Phone, Smartphone } from 'lucide-astro';
 ---
-<Base title="Trung tâm tải xuống — An Tâm GPS"><Header/><main><section class="page-hero"><div class="wrap"><span class="eyebrow">DOWNLOAD CENTER</span><h1>Tải ứng dụng và tài liệu.</h1></div></section><section class="section"><div class="wrap downloads"><article><h3>Ứng dụng IOPGPS</h3><img src="/assets/app/qrcodeiopgps.svg" alt="QR App"/><p>Dùng chung cho H29P, GS12, S20 và EV04.</p></article><article><h3>Tài liệu H29P</h3><a href="/assets/docs/h29p-catalog.png" download>Tải catalog</a><a href="/assets/docs/h29p-wiring.png" download>Tải hướng dẫn đấu dây</a></article><article><h3>Tài liệu GS12</h3><a href="/assets/gs12/manual.png" download>Tải sổ tay hướng dẫn</a></article><article><h3>Hỗ trợ Zalo</h3><img src="/assets/app/qr-zalo.jpg" alt="QR Zalo"/></article></div></section></main><Footer/></Base>
+
+<BaseLayout title="Tải IOPGPS và tài liệu thiết bị | An Tâm GPS" description="Trung tâm tải IOPGPS, catalogue, hướng dẫn đấu dây và tài liệu sử dụng thiết bị định vị An Tâm GPS.">
+  <Header />
+  <main>
+    <section class="subpage-hero subpage-hero-light"><div class="container-site subpage-heading"><span class="eyebrow">TRUNG TÂM TẢI XUỐNG</span><h1>Tải ứng dụng và tài liệu tại một nơi.</h1><p>Chọn đúng ứng dụng hoặc model thiết bị. Tài liệu gốc được giữ ở độ phân giải cao để xem và in khi cần.</p></div></section>
+    <section class="section download-section"><div class="container-site download-grid">
+      <article class="download-card download-card-featured">
+        <div class="download-card-head"><span class="resource-icon"><Smartphone size={27} /></span><div><span class="resource-type">ỨNG DỤNG</span><h2>IOPGPS</h2></div></div><p>Dùng chung cho H29P, GS12, S20 và EV04 do An Tâm GPS cung cấp.</p>
+        <div class="download-app-layout"><a href={appLinks.smartDownload} class="download-qr" aria-label="Mở trang tải IOPGPS"><img src="/assets/app/qrcodeiopgps.svg" alt="QR tải IOPGPS" width="270" height="270" /><span>Quét một mã cho iOS và Android</span></a><div class="store-buttons"><a class="store-button" href={appLinks.appStore} target="_blank" rel="noopener"><Download size={18} /><span><small>Tải trên</small>App Store</span></a><a class="store-button" href={appLinks.googlePlay} target="_blank" rel="noopener"><Download size={18} /><span><small>Tải trên</small>Google Play</span></a><a class="store-button store-button-light" href={appLinks.web} target="_blank" rel="noopener"><ExternalLink size={18} /><span><small>Sử dụng trên</small>Trình duyệt Web</span></a></div></div>
+      </article>
+      <article class="download-card"><div class="download-card-head"><span class="resource-icon"><FileText size={27} /></span><div><span class="resource-type">TÀI LIỆU H29P</span><h2>Catalogue & đấu dây</h2></div></div><div class="resource-preview-grid"><img src="/assets/docs/h29p-catalog-thumb.webp" alt="Bản xem trước catalogue H29P" width="1200" height="1200" loading="lazy" /><img src="/assets/docs/h29p-wiring-thumb.webp" alt="Bản xem trước hướng dẫn đấu dây H29P" width="1200" height="1200" loading="lazy" /></div><div class="resource-links"><a href="/assets/docs/h29p-catalog.png" download><Download size={17} /> Tải catalogue H29P</a><a href="/assets/docs/h29p-wiring.png" download><Download size={17} /> Tải hướng dẫn đấu dây</a></div></article>
+      <article class="download-card"><div class="download-card-head"><span class="resource-icon"><FileText size={27} /></span><div><span class="resource-type">TÀI LIỆU GS12</span><h2>Sổ tay hướng dẫn</h2></div></div><div class="single-preview"><img src="/assets/gs12/manual-thumb.webp" alt="Bản xem trước sổ tay GS12" width="1200" height="1200" loading="lazy" /></div><div class="resource-links"><a href="/assets/gs12/manual.png" download><Download size={17} /> Tải sổ tay GS12</a><a href="/san-pham/gs12/"><ExternalLink size={17} /> Xem chi tiết GS12</a></div></article>
+      <article class="download-card support-download-card"><div class="download-card-head"><span class="resource-icon resource-icon-green"><MessageCircle size={27} /></span><div><span class="resource-type">HỖ TRỢ</span><h2>Cần đúng tài liệu?</h2></div></div><p>Nếu model của bạn chưa có trong danh sách, gửi ảnh tem thiết bị qua Zalo để An Tâm GPS kiểm tra.</p><img class="zalo-qr" src="/assets/app/qr-zalo.jpg" alt="QR Zalo An Tâm GPS" loading="lazy" /><div class="resource-links"><a href={contact.zaloUrl} target="_blank" rel="noopener"><MessageCircle size={17} /> Mở Zalo tư vấn</a><a href={`tel:${contact.hotlineTel}`}><Phone size={17} /> Gọi {contact.hotlineDisplay}</a></div></article>
+    </div></section>
+  </main>
+  <Footer /><ContactDock />
+</BaseLayout>
