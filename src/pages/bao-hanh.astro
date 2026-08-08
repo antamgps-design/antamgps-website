@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactDock from '../components/ContactDock.astro';
+import WarrantySummary from '../components/WarrantySummary.astro';
+import { contact } from '../data/site';
+import {
+  BadgeCheck,
+  CheckCircle2,
+  ClipboardCheck,
+  Headphones,
+  MessageCircle,
+  PackageCheck,
+  Phone,
+  SearchCheck,
+  ShieldCheck,
+  Wrench,
+  XCircle,
+} from 'lucide-astro';
+
+const exchangeConditions = [
+  'Thiết bị được xác nhận có lỗi phần cứng từ nhà sản xuất.',
+  'Sản phẩm không trầy xước, móp méo, nứt hoặc vỡ do tác động bên ngoài.',
+  'Thiết bị không bị vào nước, hóa chất hoặc sử dụng sai môi trường.',
+  'Tem bảo hành và số IMEI còn nguyên vẹn, có thể đối chiếu.',
+];
+
+const exclusions = [
+  'Đấu sai nguồn điện, chập cháy hoặc hư hỏng do lắp đặt không đúng hướng dẫn.',
+  'Tự ý tháo mở, sửa chữa hoặc can thiệp bởi đơn vị không được chấp thuận.',
+  'Rơi vỡ, ngập nước, biến dạng hoặc rách/mất tem bảo hành và số IMEI.',
+  'Mất tín hiệu do vùng phủ sóng, nhà mạng, SIM hoặc nguyên nhân không thuộc phần cứng thiết bị.',
+];
+
+const steps = [
+  [ClipboardCheck, 'Chuẩn bị thông tin', 'Số điện thoại mua hàng, model, IMEI và mô tả hiện tượng.'],
+  [Headphones, 'Liên hệ hỗ trợ', 'Gửi thông tin qua Zalo hoặc gọi hotline để được kiểm tra ban đầu.'],
+  [SearchCheck, 'Tiếp nhận kiểm tra', 'An Tâm GPS hướng dẫn gửi/đưa thiết bị và xác nhận nguyên nhân lỗi.'],
+  [PackageCheck, 'Xử lý & bàn giao', 'Sửa chữa, đổi mới hoặc thông báo phương án phù hợp theo chính sách.'],
+];
+
+const faq = [
+  ['Thời hạn bảo hành được tính từ khi nào?', 'Thời hạn được tính từ ngày kích hoạt hoặc ngày mua thể hiện trên dữ liệu bán hàng, phiếu bảo hành hay chứng từ mua hàng.'],
+  ['Thiết bị mất tín hiệu có được đổi mới không?', 'An Tâm GPS sẽ kiểm tra nguyên nhân trước. Lỗi phần cứng thuộc phạm vi bảo hành; lỗi do vùng phủ sóng, SIM hoặc nhà mạng không thuộc bảo hành phần cứng.'],
+  ['Có cần giữ hộp sản phẩm không?', 'Không bắt buộc cho bảo hành thông thường, nhưng nên giữ phụ kiện, tem IMEI và chứng từ mua hàng để việc đối chiếu nhanh hơn.'],
+  
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map(([question, answer]) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: { '@type': 'Answer', text: answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Chính sách bảo hành thiết bị định vị | An Tâm GPS"
+  description="Bảo hành thiết bị định vị 12 tháng và đổi mới 1–1 trong 7 ngày khi có lỗi từ nhà sản xuất."
+  schema={faqSchema}
+>
+  <Header />
+  <main>
+    <section class="trust-hero trust-hero-warranty">
+      <div class="container-site trust-hero-inner">
+        <div class="trust-breadcrumb"><a href="/">Trang chủ</a><span>/</span><span>Bảo hành</span></div>
+        <span class="eyebrow eyebrow-green"><ShieldCheck size={17} /> CAM KẾT SAU BÁN HÀNG</span>
+        <h1>Chính sách bảo hành<br />rõ ràng, dễ kiểm tra.</h1>
+        <p>An Tâm GPS công khai thời hạn, điều kiện và quy trình xử lý để khách hàng chủ động trong suốt thời gian sử dụng.</p>
+        <div class="trust-hero-actions">
+          <a class="btn btn-green" href={contact.zaloUrl} target="_blank" rel="noopener"><MessageCircle size={19} /> Gửi yêu cầu qua Zalo</a>
+          <a class="btn btn-ghost" href={`tel:${contact.hotlineTel}`}><Phone size={19} /> {contact.hotlineDisplay}</a>
+        </div>
+      </div>
+    </section>
+
+    <WarrantySummary />
+
+    <section class="section section-soft">
+      <div class="container-site">
+        <div class="warranty-rules-grid">
+          <article class="warranty-rule-panel warranty-rule-accepted">
+            <div class="warranty-rule-heading"><BadgeCheck size={28} /><div><span>ĐỔI MỚI TRONG 7 NGÀY</span><h2>Điều kiện áp dụng</h2></div></div>
+            <ul>{exchangeConditions.map((item) => <li><CheckCircle2 size={21} /><span>{item}</span></li>)}</ul>
+          </article>
+          <article class="warranty-rule-panel warranty-rule-excluded">
+            <div class="warranty-rule-heading"><Wrench size={28} /><div><span>NGOÀI PHẠM VI BẢO HÀNH</span><h2>Trường hợp từ chối</h2></div></div>
+            <ul>{exclusions.map((item) => <li><XCircle size={21} /><span>{item}</span></li>)}</ul>
+          </article>
+        </div>
+        <p class="policy-note">An Tâm GPS kiểm tra thực tế trước khi kết luận nguyên nhân. Trường hợp ngoài phạm vi bảo hành, khách hàng sẽ được thông báo phương án và chi phí dự kiến trước khi sửa chữa.</p>
+      </div>
+    </section>
+
+    <section class="section warranty-process">
+      <div class="container-site">
+        <div class="section-intro">
+          <span class="eyebrow">QUY TRÌNH TIẾP NHẬN</span>
+          <h2 class="h2">Bốn bước xử lý yêu cầu bảo hành.</h2>
+          <p class="lead">Ưu tiên kiểm tra từ xa trước để tránh khách hàng phải gửi thiết bị khi lỗi có thể xử lý bằng cài đặt hoặc kết nối.</p>
+        </div>
+        <ol class="warranty-process-grid">
+          {steps.map(([Icon, title, description], index) => (
+            <li>
+              <span class="warranty-step-number">{String(index + 1).padStart(2, '0')}</span>
+              <span class="warranty-step-icon"><Icon size={26} /></span>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container-site policy-faq-layout">
+        <div class="section-intro">
+          <span class="eyebrow eyebrow-green">CÂU HỎI THƯỜNG GẶP</span>
+          <h2 class="h2">Thông tin cần biết trước khi gửi bảo hành.</h2>
+        </div>
+        <div class="faq-list policy-faq-list">
+          {faq.map(([question, answer]) => <details><summary>{question}</summary><p>{answer}</p></details>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-cta-section">
+      <div class="container-site trust-cta-card">
+        <div><span>CẦN KIỂM TRA THIẾT BỊ?</span><h2>Gửi IMEI và mô tả lỗi để được hỗ trợ nhanh.</h2><p>Đội ngũ An Tâm GPS sẽ hướng dẫn kiểm tra ban đầu và quy trình tiếp nhận phù hợp.</p></div>
+        <div class="trust-cta-actions"><a class="btn btn-green" href={contact.zaloUrl} target="_blank" rel="noopener"><MessageCircle size={19} /> Liên hệ Zalo</a><a class="btn trust-cta-phone" href={`tel:${contact.hotlineTel}`}><Phone size={19} /> Gọi hotline</a></div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <ContactDock />
+</BaseLayout>
