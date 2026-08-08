@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactDock from '../components/ContactDock.astro';
+import { contact } from '../data/site';
+import { BadgeCheck, Headphones, MapPin, MessageCircle, Phone, RadioTower, ShieldCheck, Smartphone } from 'lucide-astro';
+
+const values = [
+  [BadgeCheck, 'Rõ ràng', 'Thông tin sản phẩm, chi phí duy trì và chính sách sau bán hàng được trình bày minh bạch.'],
+  [Headphones, 'Tận tâm', 'Hỗ trợ từ lựa chọn thiết bị, lắp đặt, kích hoạt đến quá trình sử dụng.'],
+  [ShieldCheck, 'Ổn định', 'Ưu tiên thiết bị, kết nối và quy trình vận hành phù hợp với nhu cầu thực tế.'],
+];
+---
+
+<BaseLayout title="Về An Tâm GPS | An Tâm Smart Solutions" description="An Tâm GPS cung cấp thiết bị định vị 4G, SIM Data, thiết lập IOPGPS và hỗ trợ kỹ thuật cho khách hàng tại Việt Nam.">
+  <Header />
+  <main>
+    <section class="trust-hero trust-hero-about">
+      <div class="container-site trust-hero-inner">
+        <div class="trust-breadcrumb"><a href="/">Trang chủ</a><span>/</span><span>Về An Tâm GPS</span></div>
+        <span class="eyebrow"><MapPin size={17} /> AN TÂM SMART SOLUTIONS</span>
+        <h1>Bắt đầu từ định vị.<br />Hướng tới giải pháp thông minh.</h1>
+        <p>An Tâm GPS là ngành hàng tiên phong, kết hợp thiết bị định vị 4G, SIM dữ liệu, nền tảng IOPGPS và dịch vụ hỗ trợ trong một giải pháp thống nhất.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container-site about-story-grid">
+        <div><span class="eyebrow eyebrow-green">CHÚNG TÔI LÀM GÌ?</span><h2 class="h2">Giúp khách hàng biết xe đang ở đâu và quản lý dễ dàng hơn.</h2><p class="lead">An Tâm GPS tập trung vào nhu cầu sử dụng thực tế: chọn đúng loại thiết bị, chuẩn bị sẵn kết nối, hướng dẫn rõ ràng và có đầu mối hỗ trợ sau khi bàn giao.</p></div>
+        <div class="about-solution-list"><article><RadioTower size={26} /><div><h3>Thiết bị & SIM 4G</h3><p>Thiết bị có dây, không dây và kết nối dữ liệu theo từng nhu cầu.</p></div></article><article><Smartphone size={26} /><div><h3>Thiết lập IOPGPS</h3><p>Tạo tài khoản, kích hoạt và hướng dẫn các chức năng cần thiết.</p></div></article><article><Headphones size={26} /><div><h3>Hỗ trợ sau bán hàng</h3><p>Tư vấn sử dụng, xử lý kỹ thuật và chính sách bảo hành rõ ràng.</p></div></article></div>
+      </div>
+    </section>
+
+    <section class="section section-soft"><div class="container-site"><div class="section-intro"><span class="eyebrow">GIÁ TRỊ THEO ĐUỔI</span><h2 class="h2">Một thương hiệu công nghệ đáng tin cậy được xây từ trải nghiệm nhỏ nhất.</h2></div><div class="about-value-grid">{values.map(([Icon, title, text]) => <article class="card"><span><Icon size={27} /></span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+
+    <section class="trust-cta-section"><div class="container-site trust-cta-card"><div><span>KẾT NỐI VỚI AN TÂM GPS</span><h2>Cần tư vấn sản phẩm hoặc hợp tác đại lý?</h2><p>Liên hệ trực tiếp để được trao đổi theo đúng nhu cầu.</p></div><div class="trust-cta-actions"><a class="btn btn-green" href={contact.zaloUrl} target="_blank" rel="noopener"><MessageCircle size={19} /> Tư vấn qua Zalo</a><a class="btn trust-cta-phone" href={`tel:${contact.hotlineTel}`}><Phone size={19} /> {contact.hotlineDisplay}</a></div></div></section>
+  </main>
+  <Footer /><ContactDock />
+</BaseLayout>

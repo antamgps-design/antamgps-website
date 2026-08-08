@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactDock from '../components/ContactDock.astro';
+import { contact } from '../data/site';
+import { CheckCircle2, MessageCircle, PackageCheck, Phone, RefreshCw, Truck } from 'lucide-astro';
+---
+
+<BaseLayout title="Chính sách giao hàng và đổi trả | An Tâm GPS" description="Thông tin giao hàng toàn quốc, kiểm tra khi nhận và quy trình đổi trả thiết bị An Tâm GPS.">
+  <Header />
+  <main>
+    <section class="trust-hero">
+      <div class="container-site trust-hero-inner trust-hero-compact">
+        <div class="trust-breadcrumb"><a href="/">Trang chủ</a><span>/</span><span>Giao hàng & đổi trả</span></div>
+        <span class="eyebrow"><Truck size={17} /> CHÍNH SÁCH MUA HÀNG</span>
+        <h1>Giao hàng và đổi trả.</h1>
+        <p>Các bước được công khai để khách hàng dễ đối chiếu từ khi xác nhận đơn đến khi nhận và sử dụng thiết bị.</p>
+      </div>
+    </section>
+
+    <section class="section policy-page-section">
+      <div class="container-site policy-page-layout">
+        <aside class="policy-toc" aria-label="Mục lục chính sách">
+          <strong>Nội dung</strong>
+          <a href="#giao-hang">01. Giao hàng</a>
+          <a href="#kiem-tra">02. Kiểm tra khi nhận</a>
+          <a href="#doi-tra">03. Đổi trả</a>
+          <a href="#quy-trinh">04. Quy trình xử lý</a>
+        </aside>
+        <article class="policy-article">
+          <section id="giao-hang"><span class="policy-section-icon"><Truck size={25} /></span><h2>1. Phạm vi và thời gian giao hàng</h2><p>An Tâm GPS hỗ trợ giao hàng toàn quốc. Phí vận chuyển, phương thức giao và thời gian dự kiến được thông báo khi xác nhận đơn, phụ thuộc địa chỉ nhận hàng và đơn vị vận chuyển.</p><p>Thiết bị, tài khoản IOPGPS và SIM Data 4G (nếu thuộc gói bán) được chuẩn bị theo nội dung đơn hàng trước khi bàn giao.</p></section>
+          <section id="kiem-tra"><span class="policy-section-icon"><PackageCheck size={25} /></span><h2>2. Kiểm tra khi nhận hàng</h2><p>Khách hàng nên kiểm tra tình trạng bao bì, đúng model, số lượng thiết bị và phụ kiện. Nếu có dấu hiệu móp vỡ, sai hàng hoặc thiếu phụ kiện, vui lòng ghi nhận với đơn vị giao hàng và liên hệ An Tâm GPS sớm nhất có thể.</p><ul class="policy-check-list"><li><CheckCircle2 size={19} />Đối chiếu model và số IMEI trên thiết bị.</li><li><CheckCircle2 size={19} />Kiểm tra phụ kiện đi kèm theo gói sản phẩm.</li><li><CheckCircle2 size={19} />Lưu lại phiếu mua hàng hoặc thông tin xác nhận đơn.</li></ul></section>
+          <section id="doi-tra"><span class="policy-section-icon"><RefreshCw size={25} /></span><h2>3. Điều kiện đổi trả</h2><p>Đổi mới 1–1 trong 07 ngày áp dụng khi thiết bị được xác nhận có lỗi từ nhà sản xuất và đáp ứng đầy đủ điều kiện tại <a href="/bao-hanh/">chính sách bảo hành</a>.</p><p>Trường hợp giao sai model, sai số lượng, thiếu phụ kiện hoặc hư hỏng trong quá trình giao nhận sẽ được kiểm tra và xử lý theo tình trạng thực tế. Yêu cầu đổi do thay đổi nhu cầu được xem xét trước khi thiết bị được lắp đặt hoặc kích hoạt và cần có xác nhận của An Tâm GPS.</p></section>
+          <section id="quy-trinh"><span class="policy-section-icon"><MessageCircle size={25} /></span><h2>4. Quy trình yêu cầu hỗ trợ</h2><ol class="policy-number-list"><li>Gửi số điện thoại đặt hàng, model/IMEI và mô tả vấn đề.</li><li>Cung cấp ảnh hoặc video tình trạng hàng nếu có.</li><li>An Tâm GPS kiểm tra, xác nhận phương án nhận lại hoặc đổi hàng.</li><li>Thời gian và chi phí phát sinh (nếu có) được thông báo trước khi thực hiện.</li></ol><div class="policy-contact-box"><div><strong>Cần hỗ trợ đơn hàng?</strong><span>Liên hệ trước khi tự gửi thiết bị để được hướng dẫn đúng địa chỉ tiếp nhận.</span></div><div><a href={contact.zaloUrl} target="_blank" rel="noopener"><MessageCircle size={18} /> Zalo</a><a href={`tel:${contact.hotlineTel}`}><Phone size={18} /> {contact.hotlineDisplay}</a></div></div></section>
+        </article>
+      </div>
+    </section>
+  </main>
+  <Footer /><ContactDock />
+</BaseLayout>

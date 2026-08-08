@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactDock from '../components/ContactDock.astro';
+import { contact } from '../data/site';
+import { Database, Eye, LockKeyhole, MapPin, MessageCircle, Phone, ShieldCheck, UserCheck } from 'lucide-astro';
+---
+
+<BaseLayout title="Chính sách bảo mật và dữ liệu cá nhân | An Tâm GPS" description="Cách An Tâm GPS tiếp nhận, sử dụng và bảo vệ thông tin khách hàng khi tư vấn, kích hoạt, hỗ trợ và bảo hành.">
+  <Header />
+  <main>
+    <section class="trust-hero trust-hero-privacy">
+      <div class="container-site trust-hero-inner trust-hero-compact">
+        <div class="trust-breadcrumb"><a href="/">Trang chủ</a><span>/</span><span>Chính sách bảo mật</span></div>
+        <span class="eyebrow eyebrow-green"><ShieldCheck size={17} /> THÔNG TIN MINH BẠCH</span>
+        <h1>Chính sách bảo mật<br />và dữ liệu cá nhân.</h1>
+        <p>Chính sách này mô tả phạm vi thông tin An Tâm GPS tiếp nhận trực tiếp trong quá trình tư vấn, bán hàng, kích hoạt, hỗ trợ và bảo hành.</p>
+      </div>
+    </section>
+
+    <section class="section policy-page-section">
+      <div class="container-site policy-page-layout">
+        <aside class="policy-toc" aria-label="Mục lục chính sách">
+          <strong>Nội dung</strong>
+          <a href="#pham-vi">01. Phạm vi</a>
+          <a href="#thu-thap">02. Thông tin tiếp nhận</a>
+          <a href="#vi-tri">03. Dữ liệu vị trí</a>
+          <a href="#su-dung">04. Mục đích sử dụng</a>
+          <a href="#quyen">05. Quyền của khách hàng</a>
+        </aside>
+        <article class="policy-article">
+          <section id="pham-vi"><span class="policy-section-icon"><Eye size={25} /></span><h2>1. Phạm vi áp dụng</h2><p>Áp dụng với thông tin khách hàng chủ động cung cấp cho An Tâm GPS qua website, hotline, Zalo và trong quá trình mua hàng, kích hoạt, hỗ trợ kỹ thuật hoặc bảo hành.</p><p>Các website, ứng dụng hoặc dịch vụ của bên thứ ba có chính sách riêng. Khi sử dụng IOPGPS, khách hàng cần xem thêm điều khoản và chính sách hiển thị trên nền tảng đó.</p></section>
+          <section id="thu-thap"><span class="policy-section-icon"><Database size={25} /></span><h2>2. Thông tin có thể được tiếp nhận</h2><ul class="policy-bullet-list"><li>Họ tên, số điện thoại và thông tin liên hệ do khách hàng cung cấp.</li><li>Thông tin đơn hàng, model thiết bị, số IMEI, thời điểm kích hoạt và lịch sử bảo hành.</li><li>Nội dung trao đổi, hình ảnh hoặc thông tin kỹ thuật do khách hàng gửi để được hỗ trợ.</li><li>Thông tin cần thiết để bàn giao, vận chuyển hoặc thực hiện nghĩa vụ liên quan đến giao dịch.</li></ul></section>
+          <section id="vi-tri" class="policy-highlight-section"><span class="policy-section-icon"><MapPin size={25} /></span><h2>3. Dữ liệu vị trí và IOPGPS</h2><p>Dữ liệu vị trí của thiết bị được tạo và xử lý trong quá trình sử dụng nền tảng IOPGPS. An Tâm GPS không mặc định công khai dữ liệu này và chỉ tiếp cận trong phạm vi cần thiết khi khách hàng yêu cầu hỗ trợ, cho phép truy cập hoặc khi có căn cứ phù hợp.</p><p>Khách hàng chỉ nên lắp đặt và sử dụng tính năng theo dõi trên phương tiện/tài sản thuộc quyền quản lý hợp pháp, đồng thời thông báo hoặc có sự đồng ý phù hợp của người liên quan khi pháp luật yêu cầu.</p></section>
+          <section id="su-dung"><span class="policy-section-icon"><LockKeyhole size={25} /></span><h2>4. Mục đích sử dụng và chia sẻ</h2><p>Thông tin được dùng để tư vấn, xử lý đơn hàng, kích hoạt, hỗ trợ kỹ thuật, bảo hành, chăm sóc khách hàng và thực hiện nghĩa vụ theo quy định.</p><p>Trong phạm vi cần thiết, thông tin có thể được chuyển cho đơn vị vận chuyển, nhà mạng/SIM, nền tảng IOPGPS hoặc đối tác kỹ thuật để cung cấp dịch vụ. An Tâm GPS không bán thông tin liên hệ của khách hàng cho bên thứ ba.</p><p>Thông tin được lưu trong thời gian cần thiết cho giao dịch, bảo hành, hỗ trợ và nghĩa vụ liên quan; sau đó được xóa, ẩn danh hoặc xử lý theo quy định áp dụng.</p></section>
+          <section id="quyen"><span class="policy-section-icon"><UserCheck size={25} /></span><h2>5. Quyền và yêu cầu của khách hàng</h2><p>Khách hàng có thể liên hệ để yêu cầu kiểm tra, cập nhật, chỉnh sửa, hạn chế hoặc xóa thông tin thuộc phạm vi An Tâm GPS quản lý, trong giới hạn pháp luật và nghĩa vụ lưu trữ áp dụng.</p><div class="policy-contact-box"><div><strong>Đầu mối tiếp nhận yêu cầu dữ liệu</strong><span>Vui lòng cung cấp đủ thông tin để xác minh đúng chủ thể trước khi xử lý.</span></div><div><a href={contact.zaloUrl} target="_blank" rel="noopener"><MessageCircle size={18} /> Zalo</a><a href={`tel:${contact.hotlineTel}`}><Phone size={18} /> {contact.hotlineDisplay}</a></div></div></section>
+        </article>
+      </div>
+    </section>
+  </main>
+  <Footer /><ContactDock />
+</BaseLayout>

@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ContactDock from '../components/ContactDock.astro';
 import ProductCard from '../components/ProductCard.astro';
+import WarrantySummary from '../components/WarrantySummary.astro';
 import { products } from '../data/products';
 import { appLinks, contact } from '../data/site';
 import { MapPin, BellRing, Route, ShieldCheck, Smartphone, Headphones, CheckCircle2, RadioTower, BadgeCheck, ExternalLink, Gift, Phone, Truck } from 'lucide-astro';
@@ -94,8 +95,8 @@ import { MapPin, BellRing, Route, ShieldCheck, Smartphone, Headphones, CheckCirc
             <article class="gift-feature-card">
               <span class="gift-feature-icon"><ShieldCheck size={30}/></span>
               <div>
-                <h3>Bảo hành<br/>chính hãng</h3>
-                <p>An tâm sử dụng</p>
+                <h3>Bảo hành<br/>12 tháng</h3>
+                <p>Chính sách rõ ràng</p>
               </div>
             </article>
 
@@ -110,7 +111,7 @@ import { MapPin, BellRing, Route, ShieldCheck, Smartphone, Headphones, CheckCirc
 
           <div class="gift-trust-row">
             <span><ShieldCheck size={17}/>Thiết bị chính hãng</span>
-            <span>Dữ liệu bảo mật</span>
+            <span>Thông tin minh bạch</span>
             <span>Hoạt động ổn định 24/7</span>
           </div>
         </div>
@@ -182,6 +183,8 @@ import { MapPin, BellRing, Route, ShieldCheck, Smartphone, Headphones, CheckCirc
     <div class="ecosystem-grid">{[[RadioTower,'SIM 4G tặng kèm','Kết nối dữ liệu được chuẩn bị và kích hoạt sẵn.'],[Smartphone,'Ứng dụng IOPGPS','Giao diện trực quan trên điện thoại và nền tảng Web.'],[BadgeCheck,'Bảo hành 12 tháng','Chính sách rõ ràng, hỗ trợ nhanh khi thiết bị có lỗi.'],[Headphones,'Hỗ trợ kỹ thuật','Tư vấn lắp đặt, cài ứng dụng và sử dụng tận tâm.']].map(([Icon,title,desc])=><article class="card ecosystem-card"><div class="icon-box"><Icon size={27}/></div><h3>{title}</h3><p>{desc}</p></article>)}</div>
     <div class="cta-band"><div><h3>Cần chọn thiết bị phù hợp cho phương tiện?</h3><p>Đội ngũ An Tâm GPS tư vấn đúng nhu cầu, đúng loại xe và đúng phương án lắp đặt.</p></div><a class="btn btn-green" href={`tel:${contact.hotlineTel}`}>Gọi {contact.hotlineDisplay}</a></div>
   </div></section>
+
+  <WarrantySummary />
 </main>
 <Footer />
 <ContactDock />

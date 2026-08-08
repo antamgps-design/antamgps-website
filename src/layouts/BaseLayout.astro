@@ -1,11 +1,13 @@
 ---
 import '../styles/global.css';
 import '../styles/pages-v3.css';
+import '../styles/trust-pages.css';
 interface Props {
   title?: string;
   description?: string;
   image?: string;
   noindex?: boolean;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
@@ -13,6 +15,7 @@ const {
   description = 'Giải pháp định vị GPS và quản lý phương tiện toàn diện.',
   image = '/assets/logo/logo-antam-smart-v31.png',
   noindex = false,
+  schema,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
@@ -32,6 +35,7 @@ const organizationSchema = {
     availableLanguage: 'Vietnamese',
   },
 };
+const extraSchemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 ---
 <!doctype html>
 <html lang="vi">
@@ -42,7 +46,11 @@ const organizationSchema = {
   <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
   <meta name="theme-color" content="#12368a" />
   <link rel="canonical" href={canonical} />
-  <link rel="icon" type="image/png" href="/assets/logo/logo-antam-smart-v31.png" />
+  <link rel="icon" href="/favicon-antam-v2.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo/favicon-antam-32-v2.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo/favicon-antam-16-v2.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon-antam-v2.png" />
+  <link rel="manifest" href="/site.webmanifest?v=2" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -58,6 +66,7 @@ const organizationSchema = {
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={shareImage} />
   <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+  {extraSchemas.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}
   <title>{title}</title>
 </head>
 <body>
