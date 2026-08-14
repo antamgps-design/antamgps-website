@@ -8,13 +8,13 @@
   "theme_color": "#12368a",
   "icons": [
     {
-      "src": "/assets/logo/favicon-antam-192-v2.png",
+      "src": "/assets/logo/favicon-antam-192-v34.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/assets/logo/favicon-antam-v2.png",
+      "src": "/assets/logo/favicon-antam-v34.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
