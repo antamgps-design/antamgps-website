@@ -36,9 +36,8 @@
   --section-copy-size: clamp(16px, 1vw, 17px);
 
   /* Header — chỉnh logo tại đây */
-  --header-height: 88px;
-  --header-logo-width: 228px;
-  --header-logo-height: 64px;
+  --header-height: 96px;
+  --header-logo-width: 264px;
 
   /* Hero — chỉnh chữ và ảnh tại đây */
   --hero-padding-top: 54px;
@@ -174,9 +173,9 @@ button { font: inherit; }
 .header-row { height: var(--header-height); display: flex; align-items: center; justify-content: space-between; gap: 28px; }
 .header-row > a:first-child { display: flex; align-items: center; flex: 0 0 auto; }
 .brand-link { min-width: 0; }
-.brand-logo { width: var(--header-logo-width); max-height: var(--header-logo-height); object-fit: contain; object-position: left center; }
+.brand-logo { width: var(--header-logo-width); height: auto; object-fit: contain; object-position: left center; }
 .brand-mobile { display: none; align-items: center; gap: 10px; color: var(--blue-900); }
-.brand-mobile > img { width: 178px; height: auto; object-fit: contain; object-position: left center; }
+.brand-mobile > img { width: 184px; height: auto; object-fit: contain; object-position: left center; }
 .main-nav { display: flex; align-items: center; gap: 27px; color: #34415b; font-size: .94rem; font-weight: 600; white-space: nowrap; }
 .main-nav a { transition: color .2s ease; }
 .main-nav a:hover { color: var(--blue-600); }
@@ -669,8 +668,8 @@ body.menu-open { overflow: hidden; }
 /* ================= RESPONSIVE ================= */
 @media (max-width: 1120px) {
   :root {
-    --header-logo-width: 205px;
-    --header-logo-height: 60px;
+    --header-height: 90px;
+    --header-logo-width: 238px;
     --section-title-size: clamp(34px, 4.2vw, 42px);
   }
   .main-nav { gap: 20px; font-size: .88rem; }
@@ -682,7 +681,7 @@ body.menu-open { overflow: hidden; }
 }
 
 @media (max-width: 960px) {
-  :root { --header-height: 80px; --header-logo-width: 235px; --header-logo-height: 58px; --hero-padding-top: 42px; --hero-padding-bottom: 34px; --hero-image-height: 390px; }
+  :root { --header-height: 84px; --header-logo-width: 224px; --hero-padding-top: 42px; --hero-padding-bottom: 34px; --hero-image-height: 390px; }
   .main-nav, .header-actions { display: none; }
   .mobile-trigger { display: grid; }
   .mobile-menu.open { position: fixed; inset: 0; z-index: 100; display: block; padding: 20px; background: #fff; }
@@ -714,9 +713,8 @@ body.menu-open { overflow: hidden; }
   :root {
     --container-gutter: 28px;
     --section-space: 70px;
-    --header-height: 76px;
-    --header-logo-width: 195px;
-    --header-logo-height: 50px;
+    --header-height: 78px;
+    --header-logo-width: 184px;
     --hero-padding-top: 32px;
     --hero-padding-bottom: 28px;
     --hero-title-size: clamp(2rem, 9.7vw, 2.4rem);
