@@ -717,7 +717,7 @@ body.menu-open { overflow: hidden; }
     --header-logo-width: 184px;
     --hero-padding-top: 32px;
     --hero-padding-bottom: 28px;
-    --hero-title-size: clamp(2rem, 9.7vw, 2.4rem);
+    --hero-title-size: clamp(1.45rem, 6.8vw, 2.15rem);
     --hero-image-height: 300px;
     --footer-logo-width: 230px;
     --section-label-size: 12px;
@@ -765,6 +765,7 @@ body.menu-open { overflow: hidden; }
   .hero-intro { text-align: left; }
   .hero-chip { max-width: 100%; padding: 8px 12px; font-size: .66rem; line-height: 1.35; letter-spacing: .09em; text-align: center; }
   .hero h1 { margin: 18px 0 14px; line-height: 1.12; letter-spacing: -.028em; }
+  .hero-line { white-space: nowrap; }
   .hero-copy { font-size: .97rem; line-height: 1.7; text-align: left; }
   .hero-visual { margin: 0 -6px; }
   .hero-composition { width: 100%; }
@@ -815,7 +816,7 @@ body.menu-open { overflow: hidden; }
 }
 
 @media (max-width: 390px) {
-  :root { --header-logo-width: 175px; --hero-title-size: 2rem; --hero-image-height: 270px; }
+  :root { --header-logo-width: 175px; --hero-image-height: 270px; }
   .brand-mobile > img { width: 156px; }
   .hero-actions { grid-template-columns: 1fr; }
 }
