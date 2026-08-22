@@ -3,13 +3,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ContactDock from '../components/ContactDock.astro';
-import { Camera, Gauge, Wrench, ShieldCheck, Store, ClipboardCheck, ArrowRight, MessageCircle, CheckCircle2 } from 'lucide-astro';
+import { Camera, Gauge, Wrench, ShieldCheck, Store, ClipboardCheck, ArrowRight, MessageCircle, CheckCircle2, BatteryCharging, ScanLine, Wind, CircleParking, Image, Link2 } from 'lucide-astro';
 import { contact } from '../data/site';
 
 const categories = [
   { icon: Camera, title: 'Camera hành trình', text: 'Camera trước, camera trước – sau và lựa chọn phù hợp cho xe cá nhân hoặc xe dịch vụ.', status: 'Đang chọn sản phẩm để kiểm chứng' },
   { icon: Gauge, title: 'Cảm biến áp suất lốp', text: 'Ưu tiên khả năng cảnh báo dễ hiểu, lắp đặt thuận tiện và bảo hành minh bạch.', status: 'Đang xây dựng bài hướng dẫn chọn mua' },
   { icon: Wrench, title: 'Phụ kiện an toàn', text: 'Giá đỡ, sạc và nhóm phụ kiện thực sự hữu ích trong quá trình sử dụng xe.', status: 'Sẽ bổ sung theo kết quả thử nghiệm' },
+];
+
+const products = [
+  { icon: Camera, priority: 'Ưu tiên 1', title: 'Camera hành trình trước – sau', audience: 'Xe cá nhân, xe dịch vụ', benefit: 'Dễ tư vấn, nhu cầu rõ và có thể lắp kèm khi bàn giao GPS.', image: 'Ảnh hộp/sản phẩm nền sáng + ảnh đã lắp trên kính xe.' },
+  { icon: Camera, priority: 'Ưu tiên 1', title: 'Camera hành trình 4G', audience: 'Chủ xe cần xem từ xa', benefit: 'Liên quan trực tiếp tới định vị, cảnh báo và quản lý xe từ xa.', image: 'Ảnh camera cận cảnh + màn hình điện thoại đang xem xe.' },
+  { icon: Gauge, priority: 'Ưu tiên 1', title: 'Cảm biến áp suất lốp', audience: 'Ô tô gia đình, xe đường dài', benefit: 'Nhóm an toàn thiết thực, dễ giải thích lợi ích cho khách hàng.', image: 'Ảnh bộ cảm biến + màn hình hiển thị áp suất rõ nét.' },
+  { icon: Wind, priority: 'Ưu tiên 2', title: 'Máy bơm lốp mini', audience: 'Mọi chủ xe', benefit: 'Sản phẩm cứu hộ gọn, dễ bán kèm và ít yêu cầu lắp đặt.', image: 'Ảnh máy nền sáng + ảnh đang bơm lốp thực tế.' },
+  { icon: BatteryCharging, priority: 'Ưu tiên 2', title: 'Bộ kích bình ô tô', audience: 'Xe ít sử dụng, xe đi xa', benefit: 'Bổ sung đúng nhóm cứu hộ và tạo gói an toàn hoàn chỉnh.', image: 'Ảnh đủ bộ phụ kiện + ảnh kẹp vào ắc quy đúng cách.' },
+  { icon: ScanLine, priority: 'Dành cho đại lý', title: 'Máy đọc lỗi OBD2', audience: 'Gara, thợ kỹ thuật', benefit: 'Giúp đại lý kiểm tra nhanh và mở rộng dịch vụ sau lắp đặt.', image: 'Ảnh thiết bị/cổng OBD + màn hình đọc lỗi dễ nhìn.' },
+  { icon: BatteryCharging, priority: 'Dành cho đại lý', title: 'Máy kiểm tra ắc quy', audience: 'Gara, cửa hàng điện xe', benefit: 'Thiết bị sử dụng lặp lại, phù hợp để giới thiệu cho đối tác kỹ thuật.', image: 'Ảnh máy nền sạch + ảnh kết quả đo trên màn hình.' },
+  { icon: CircleParking, priority: 'Ưu tiên 3', title: 'Camera lùi hoặc cảm biến lùi', audience: 'Xe chưa có hỗ trợ đỗ', benefit: 'Có nhu cầu thật nhưng cần xác nhận khả năng lắp và bảo hành.', image: 'Ảnh bộ sản phẩm + ảnh góc lắp trên xe, không dùng ảnh ghép.' },
 ];
 ---
 <BaseLayout title="Tư vấn phụ kiện ô tô, xe máy | An Tâm GPS" description="ANTAM GPS chọn lọc camera hành trình, cảm biến áp suất lốp và phụ kiện an toàn theo nhu cầu sử dụng thực tế.">
@@ -22,8 +33,28 @@ const categories = [
     </div></section>
 
     <section class="section"><div class="container-site">
-      <div class="section-intro"><span class="eyebrow">DANH MỤC ĐANG XÂY DỰNG</span><h2 class="h2">Ba nhóm gần nhất với nhu cầu bảo vệ và sử dụng xe.</h2><p class="lead">Danh sách cụ thể chỉ được công bố sau khi kiểm tra thông tin gian hàng, chính sách bảo hành và mức độ phù hợp.</p></div>
+      <div class="section-intro"><span class="eyebrow">DANH MỤC TUYỂN CHỌN</span><h2 class="h2">Ba nhóm gần nhất với nhu cầu bảo vệ và sử dụng xe.</h2><p class="lead">ANTAM GPS ưu tiên sản phẩm có nhu cầu rõ, dễ bàn giao và có chính sách bảo hành có thể kiểm tra.</p></div>
       <div class="accessory-category-grid">{categories.map(({ icon: Icon, title, text, status }) => <article class="card accessory-category-card"><span class="accessory-category-icon"><Icon size={30}/></span><h2>{title}</h2><p>{text}</p><span class="category-status"><ClipboardCheck size={17}/>{status}</span></article>)}</div>
+    </div></section>
+
+    <section class="section phase-two-catalog"><div class="container-site">
+      <div class="section-intro phase-two-catalog-head"><span class="eyebrow eyebrow-green">DANH SÁCH ĐỢT 2</span><h2 class="h2">Bắt đầu từ 5 sản phẩm cho khách và 3 thiết bị dành cho đại lý.</h2><p class="lead">Chưa gắn link mua cho đến khi kiểm tra đúng gian hàng, mẫu sản phẩm, bảo hành và nội dung được phép sử dụng.</p></div>
+      <div class="recommendation-grid">{products.map(({ icon: Icon, priority, title, audience, benefit, image }) => <article class="recommendation-card">
+        <div class="recommendation-top"><span class="recommendation-icon"><Icon size={25}/></span><span class="recommendation-priority">{priority}</span></div>
+        <h3>{title}</h3><p class="recommendation-audience">Phù hợp: <b>{audience}</b></p><p>{benefit}</p>
+        <div class="recommendation-image-guide"><Image size={17}/><span>{image}</span></div>
+        <span class="recommendation-link-state"><Link2 size={16}/> Chờ kiểm tra link TikTok Shop</span>
+      </article>)}</div>
+    </div></section>
+
+    <section class="section section-soft"><div class="container-site source-guide-grid">
+      <div><span class="eyebrow">CHECKLIST LẤY LINK & HÌNH</span><h2 class="h2">Mỗi sản phẩm chỉ cần ba hình đúng mục đích.</h2><p class="lead">Ưu tiên tài nguyên do gian hàng chính hãng hoặc nhà bán cho phép dùng trong chương trình tiếp thị liên kết.</p></div>
+      <ol class="numbered-steps numbered-steps-compact">
+        <li><span>01</span><div><b>Ảnh đại diện nền sạch</b><p>Tỷ lệ 1:1 hoặc 4:5, thấy trọn sản phẩm, không chèn giá.</p></div></li>
+        <li><span>02</span><div><b>Ảnh lắp hoặc sử dụng thực tế</b><p>Cho khách hình dung vị trí lắp, kích thước và cách dùng.</p></div></li>
+        <li><span>03</span><div><b>Ảnh một tính năng nổi bật</b><p>Chỉ một thông điệp dễ đọc; tránh collage và chữ quá nhỏ.</p></div></li>
+        <li><span>04</span><div><b>Link đúng biến thể</b><p>Kiểm tra mẫu, gian hàng, bảo hành và khả năng ghi nhận hoa hồng.</p></div></li>
+      </ol>
     </div></section>
 
     <section class="section section-soft"><div class="container-site editorial-grid">

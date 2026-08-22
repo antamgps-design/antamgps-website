@@ -903,10 +903,31 @@ body.menu-open { overflow: hidden; }
 .partner-ready-list { display: flex; flex-wrap: wrap; gap: 9px 20px; margin-top: 17px; }
 .partner-ready-list span { display: flex; align-items: center; gap: 7px; color: #3c4b63; font-size: .86rem; font-weight: 600; }
 .partner-ready-list svg { color: var(--green-600); }
+.phase-two-catalog { padding-top: 22px; }
+.phase-two-catalog-head { max-width: 840px; }
+.recommendation-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.recommendation-card { display: flex; min-width: 0; flex-direction: column; padding: 24px; background: #fff; border: 1px solid var(--line); border-radius: 21px; box-shadow: var(--shadow-sm); }
+.recommendation-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.recommendation-icon { display: grid; flex: 0 0 auto; place-items: center; width: 48px; height: 48px; color: var(--blue-600); background: #edf6ff; border-radius: 15px; }
+.recommendation-priority { padding: 7px 10px; color: var(--green-700); background: #eefaf1; border-radius: 999px; font-size: .72rem; font-weight: 800; }
+.recommendation-card h3 { margin: 20px 0 8px; color: var(--blue-950); font-size: 1.08rem; line-height: 1.4; }
+.recommendation-card p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.65; }
+.recommendation-card .recommendation-audience { margin-bottom: 10px; color: #40506a; }
+.recommendation-image-guide { display: flex; align-items: flex-start; gap: 8px; margin-top: 18px; padding-top: 16px; color: #52617a; border-top: 1px solid var(--line); font-size: .8rem; line-height: 1.55; }
+.recommendation-image-guide svg, .recommendation-link-state svg { flex: 0 0 auto; margin-top: 2px; color: var(--green-600); }
+.recommendation-link-state { display: flex; align-items: center; gap: 7px; margin-top: auto; padding-top: 17px; color: var(--blue-600); font-size: .78rem; font-weight: 700; }
+.source-guide-grid { display: grid; grid-template-columns: .85fr 1.15fr; align-items: start; gap: 70px; }
+.dealer-kit-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.dealer-kit-card { padding: 28px; background: #fff; border: 1px solid var(--line); border-radius: 21px; box-shadow: var(--shadow-sm); }
+.dealer-kit-card > svg { color: var(--green-600); }
+.dealer-kit-card > span { display: block; margin-top: 20px; color: var(--blue-600); font-size: .74rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.dealer-kit-card h3 { margin: 8px 0 10px; color: var(--blue-950); font-size: 1.18rem; }
+.dealer-kit-card p { margin: 0; color: var(--muted); line-height: 1.7; }
 
 @media (max-width: 1120px) {
   .use-case-grid, .partner-value-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .use-case-card { min-height: 250px; }
+  .recommendation-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 960px) {
@@ -917,6 +938,11 @@ body.menu-open { overflow: hidden; }
   .editorial-grid, .content-roadmap, .partner-page-grid, .partner-flow-grid { grid-template-columns: 1fr; gap: 44px; }
   .partner-ready-card { grid-template-columns: auto 1fr; }
   .partner-ready-card .btn { grid-column: 1 / -1; width: 100%; }
+  .gift-layout-compact, .app-grid-compact { grid-template-columns: 1fr; }
+  .app-grid-compact > div:last-child { grid-row: 1; }
+  .app-grid-compact > .app-image { grid-row: 2; }
+  .source-guide-grid { grid-template-columns: 1fr; gap: 42px; }
+  .dealer-kit-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 680px) {
@@ -926,11 +952,14 @@ body.menu-open { overflow: hidden; }
   .use-case-link { margin-top: 8px; }
   .section-more-link { margin-top: 4px; }
   .compact-benefits { padding-top: 58px; padding-bottom: 58px; }
-  .gift-layout-compact { padding: 30px 22px; }
+  .gift-layout-compact { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 30px 22px; }
+  .gift-layout-compact > * { min-width: 0; }
   .gift-title { font-size: clamp(1.95rem, 8.2vw, 2.35rem); }
   .gift-quick-list { grid-template-columns: 1fr; }
   .gift-renewal-left { text-align: left; }
-  .app-grid-compact .app-image { max-height: 440px; }
+  .app-grid-compact { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .app-grid-compact > * { min-width: 0; }
+  .app-grid-compact .app-image { width: min(76%, 330px); max-height: 410px; margin-inline: auto; }
   .phase-two-section { padding-top: 62px; padding-bottom: 62px; }
   .phase-two-head .btn { width: 100%; }
   .accessory-card { padding: 20px; }
@@ -945,4 +974,7 @@ body.menu-open { overflow: hidden; }
   .partner-ready-card { grid-template-columns: 1fr; padding: 25px; }
   .partner-ready-card .btn { grid-column: auto; }
   .partner-ready-list { display: grid; }
+  .recommendation-grid { grid-template-columns: 1fr; }
+  .recommendation-card { padding: 22px; }
+  .source-guide-grid { gap: 30px; }
 }
