@@ -4,6 +4,6 @@ import { contact } from '../data/site';
 ---
 
 <aside class="contact-dock" aria-label="Liên hệ nhanh">
-  <a href={`tel:${contact.hotlineTel}`}><Phone size={18} /> Gọi ngay</a>
-  <a href={contact.zaloUrl} target="_blank" rel="noopener"><MessageCircle size={18} /> Zalo</a>
+  <a href={`tel:${contact.hotlineTel}`} data-track="contact_dock_phone"><Phone size={18} /> Gọi ngay</a>
+  <a href={contact.zaloUrl} target="_blank" rel="noopener" data-track="contact_dock_zalo"><MessageCircle size={18} /> Zalo</a>
 </aside>

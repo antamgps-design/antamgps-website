@@ -7,183 +7,80 @@ import ProductCard from '../components/ProductCard.astro';
 import WarrantySummary from '../components/WarrantySummary.astro';
 import { products } from '../data/products';
 import { appLinks, contact } from '../data/site';
-import { MapPin, BellRing, Route, ShieldCheck, Smartphone, Headphones, CheckCircle2, RadioTower, BadgeCheck, ExternalLink, Gift, Phone, Truck } from 'lucide-astro';
+import { MapPin, BellRing, Route, ShieldCheck, Headphones, CheckCircle2, ExternalLink, Gift, Phone, Bike, Car, Building2, BatteryCharging, ArrowRight, Camera, Gauge, Wrench, MessageCircle } from 'lucide-astro';
+
+const useCases = [
+  { icon: Bike, title: 'Xe máy, xe điện', text: 'Thiết bị nhỏ gọn, dễ giấu kín và dùng được với dải điện áp rộng.', product: 'H29P', href: '/san-pham/h29p/' },
+  { icon: Car, title: 'Ô tô cá nhân', text: 'Theo dõi vị trí, ACC, lịch sử hành trình và hỗ trợ chống trộm.', product: 'GS12', href: '/san-pham/gs12/' },
+  { icon: BatteryCharging, title: 'Không muốn đấu dây', text: 'Gắn nhanh bằng nam châm, linh hoạt chuyển đổi giữa các phương tiện.', product: 'S20', href: '/san-pham/s20/' },
+  { icon: Building2, title: 'Gara và đội xe', text: 'Quản lý nhiều thiết bị, hỗ trợ lắp đặt và bàn giao tài khoản rõ ràng.', product: 'Tư vấn cấu hình', href: '/doi-tac/' },
+];
+
+const accessoryCategories = [
+  { icon: Camera, title: 'Camera hành trình', text: 'Gợi ý theo nhu cầu đi phố, đường dài hoặc camera trước – sau.' },
+  { icon: Gauge, title: 'Cảm biến áp suất lốp', text: 'Ưu tiên sản phẩm dễ sử dụng, thông tin rõ ràng và bảo hành tốt.' },
+  { icon: Wrench, title: 'Phụ kiện an toàn', text: 'Chỉ chọn nhóm sản phẩm liên quan trực tiếp đến việc sử dụng xe.' },
+];
 ---
-<BaseLayout title="An Tâm GPS — Định vị chính xác, an tâm mọi hành trình" description="Thiết bị định vị GPS 4G, ứng dụng IOPGPS, SIM data và hỗ trợ kỹ thuật toàn diện.">
+<BaseLayout title="An Tâm GPS — Định vị chính xác, an tâm mọi hành trình" description="Chọn thiết bị định vị GPS 4G phù hợp cho xe máy, ô tô và đội xe. Tặng 12 tháng SIM Data 4G, IOPGPS và hỗ trợ kỹ thuật.">
 <Header />
 <main>
   <section class="hero">
     <div class="container-site hero-grid">
       <div class="hero-intro">
         <span class="hero-chip">GIẢI PHÁP ĐỊNH VỊ GPS 4G THÔNG MINH</span>
-        <h1>
-  <span class="hero-line hero-green">
-    Biết xe đang ở đâu.
-  </span>
-
-  <span class="hero-line hero-white">
-    An tâm mọi hành trình.
-  </span>
-</h1>
-        <p class="hero-copy">Theo dõi phương tiện theo thời gian thực, nhận cảnh báo thông minh và quản lý nhiều thiết bị trên ứng dụng IOPGPS.</p>
+        <h1><span class="hero-line hero-green">Biết xe đang ở đâu.</span><span class="hero-line hero-white">An tâm mọi hành trình.</span></h1>
+        <p class="hero-copy">Theo dõi vị trí, xem lại hành trình và nhận cảnh báo trên điện thoại. Thiết bị được kích hoạt sẵn và hỗ trợ trong suốt quá trình sử dụng.</p>
       </div>
-
-      <div class="hero-visual">
-        <div class="hero-glow"></div>
-        <img class="hero-composition" src="/assets/app/hero-phone-h29p.webp" alt="Điện thoại hiển thị ứng dụng IOPGPS và thiết bị H29P" width="1200" height="1200" fetchpriority="high" />
-      </div>
-
+      <div class="hero-visual"><div class="hero-glow"></div><img class="hero-composition" src="/assets/app/hero-phone-h29p.webp" alt="Điện thoại hiển thị ứng dụng IOPGPS và thiết bị H29P" width="1200" height="1200" fetchpriority="high" /></div>
       <div class="hero-bottom">
         <div class="hero-features">
-          <div><b>Định vị chính xác</b><span>Sai số ≤ 5 mét</span></div>
-          <div><b>Kết nối 4G ổn định</b><span>Tốc độ cao</span></div>
-          <div><b>Bảo vệ 24/7</b><span>Cảnh báo tức thời</span></div>
-          <div><b>Pin dự phòng</b><span>Hoạt động liên tục</span></div>
+          <div><b>Định vị chính xác</b><span>Sai số ≤ 5 mét</span></div><div><b>Kết nối 4G</b><span>Truyền dữ liệu ổn định</span></div><div><b>Cảnh báo 24/7</b><span>Phát hiện bất thường</span></div><div><b>Hỗ trợ tận tâm</b><span>Cài đặt và hướng dẫn</span></div>
         </div>
-        <div class="hero-actions"><a class="btn btn-green" href="#san-pham">Khám phá sản phẩm</a><a class="btn hero-secondary" href="/iopgps/">Xem ứng dụng</a></div>
+        <div class="hero-actions"><a class="btn btn-green" href="#chon-thiet-bi" data-track="hero_choose_product">Chọn thiết bị phù hợp</a><a class="btn hero-secondary" href={contact.zaloUrl} target="_blank" rel="noopener" data-track="hero_zalo"><MessageCircle size={18}/> Tư vấn Zalo</a></div>
       </div>
     </div>
   </section>
 
-  <section class="gift-section" aria-label="Ưu đãi khi mua thiết bị">
-    <div class="container-site">
-      <div class="gift-layout">
-        <div class="gift-main">
-          <span class="gift-eyebrow">
-            <Gift size={17}/>
-            ƯU ĐÃI DÀNH CHO KHÁCH HÀNG MỚI
-          </span>
-
-          <h2 class="gift-title">
-            <span>Mua thiết bị, nhận ngay bộ quà tặng</span>
-              </h2>
-
-          <p class="gift-copy">
-            12 tháng SIM Data 4G và sử dụng IOPGPS
-          </p>
-
-          <div class="gift-cta-row">
-            <a class="gift-primary-btn" href="#san-pham">
-              <Gift size={21}/>
-              NHẬN ƯU ĐÃI NGAY
-            </a>
-
-            <a class="gift-hotline-btn" href={`tel:${contact.hotlineTel}`}>
-              <Phone size={21}/>
-              TƯ VẤN: {contact.hotlineDisplay}
-            </a>
-          </div>
-
-          <div class="gift-feature-grid">
-            <article class="gift-feature-card">
-              <span class="gift-feature-icon"><CheckCircle2 size={30}/></span>
-              <div>
-                <h3>Kích hoạt sẵn<br/>trước khi giao</h3>
-                <p>Nhận là dùng ngay</p>
-              </div>
-            </article>
-
-            <article class="gift-feature-card">
-              <span class="gift-feature-icon"><Headphones size={30}/></span>
-              <div>
-                <h3>Hỗ trợ kỹ thuật<br/>tận tâm</h3>
-                <p>Đội ngũ luôn sẵn sàng</p>
-              </div>
-            </article>
-
-            <article class="gift-feature-card">
-              <span class="gift-feature-icon"><ShieldCheck size={30}/></span>
-              <div>
-                <h3>Bảo hành<br/>12 tháng</h3>
-                <p>Chính sách rõ ràng</p>
-              </div>
-            </article>
-
-            <article class="gift-feature-card">
-              <span class="gift-feature-icon"><Truck size={30}/></span>
-              <div>
-                <h3>Giao hàng<br/>toàn quốc</h3>
-                <p>Nhanh chóng, an toàn</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="gift-trust-row">
-            <span><ShieldCheck size={17}/>Thiết bị chính hãng</span>
-            <span>Thông tin minh bạch</span>
-            <span>Hoạt động ổn định 24/7</span>
-          </div>
-        </div>
-
-        <aside class="gift-aside">
-          <div class="gift-card">
-            <span class="gift-ribbon">QUÀ TẶNG</span>
-
-            <div class="gift-visual">
-              <img src="/assets/app/gift-box-antam.webp" alt="Hộp quà tặng An Tâm GPS" width="800" height="533" loading="lazy" decoding="async"/>
-            </div>
-
-            <div class="gift-card-content">
-              <h3>BỘ QUÀ TẶNG</h3>
-              <span class="gift-duration">12 THÁNG</span>
-
-              <ul class="gift-list">
-                <li><CheckCircle2 size={20}/>SIM Data 4G</li>
-                <li><CheckCircle2 size={20}/>Ứng dụng IOPGPS</li>
-                <li><CheckCircle2 size={20}/>Tặng kèm 12 tháng</li>
-              </ul>
-
-              <div class="gift-divider"></div>
-
-              <div class="gift-price">TẶNG KÈM</div>
-              <p class="gift-activation">Đã kích hoạt trước khi giao</p>
-              <p class="gift-renewal">Từ năm thứ hai áp dụng phí duy trì theo chính sách tại thời điểm gia hạn.</p>
-            </div>
-          </div>
-
-          <div class="gift-qr-card">
-            <a href={appLinks.smartDownload} aria-label="Mở trang tải ứng dụng IOPGPS"><img src="/assets/app/qrcodeiopgps.svg" alt="QR tải ứng dụng IOPGPS" width="270" height="270" loading="lazy"/></a>
-            <div>
-              <b>Quét mã tải ứng dụng</b>
-              <p>Dùng camera điện thoại để tải nhanh.</p>
-              <a href={appLinks.web} target="_blank" rel="noopener">
-                Mở phiên bản Web <ExternalLink size={15}/>
-              </a>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="giai-phap"><div class="container-site">
-    <div class="section-intro"><span class="eyebrow">VÌ SAO CẦN GPS?</span><h2 class="h2">Bảo vệ phương tiện bằng thông tin chính xác.</h2><p class="lead">Không chỉ biết xe đang ở đâu, hệ thống còn giúp xem lại hành trình, nhận cảnh báo và quản lý nhiều phương tiện trong cùng một tài khoản.</p></div>
-    <div class="feature-grid">
-      {[[MapPin,'Theo dõi trực tuyến','Cập nhật vị trí phương tiện theo thời gian thực trên điện thoại.'],[Route,'Lịch sử hành trình','Xem lại quãng đường, thời gian và tốc độ đã di chuyển.'],[BellRing,'Cảnh báo thông minh','Nhận thông báo rung, di chuyển, mất nguồn hoặc vượt tốc.'],[ShieldCheck,'Bảo vệ 24/7','Tăng khả năng kiểm soát và xử lý nhanh khi có bất thường.']].map(([Icon,title,desc])=><article class="card feature-card"><div class="icon-box"><Icon size={27}/></div><h3>{title}</h3><p>{desc}</p></article>)}
-    </div>
+  <section class="section home-use-cases" id="giai-phap"><div class="container-site">
+    <div class="section-intro home-intro-center"><span class="eyebrow">CHỌN THEO NHU CẦU</span><h2 class="h2">Bạn đang cần định vị cho loại xe nào?</h2><p class="lead">Chọn đúng nhu cầu trước, sau đó mới chọn thiết bị. Không cần đọc hết một “rừng” thông số kỹ thuật.</p></div>
+    <div class="use-case-grid">{useCases.map(({ icon: Icon, title, text, product, href }) => <a class="use-case-card" href={href} data-track="select_use_case" data-label={title}><span class="use-case-icon"><Icon size={28}/></span><h3>{title}</h3><p>{text}</p><span class="use-case-link">Gợi ý: {product} <ArrowRight size={16}/></span></a>)}</div>
   </div></section>
 
-  <section class="section section-soft" id="san-pham"><div class="container-site">
-    <div class="section-intro product-intro"><span class="eyebrow eyebrow-green">SẢN PHẨM NỔI BẬT</span><h2 class="h2 section-title-no-margin">Thiết bị định vị thông minh</h2></div>
-    <div class="product-grid">{products.map(product=><ProductCard product={product}/>)}</div>
+  <section class="section section-soft" id="chon-thiet-bi"><div class="container-site">
+    <div class="section-head"><div><span class="eyebrow eyebrow-green">THIẾT BỊ ĐỊNH VỊ</span><h2 class="h2">Bốn lựa chọn, mỗi mẫu một thế mạnh.</h2><p class="lead">Các gợi ý dưới đây giúp bạn khoanh vùng nhanh. Đội ngũ ANTAM GPS sẽ xác nhận lại theo loại xe và cách lắp đặt.</p></div><a class="text-link section-more-link" href="/san-pham/">So sánh tất cả sản phẩm <ArrowRight size={17}/></a></div>
+    <div class="product-grid">{products.map(product => <ProductCard product={product}/>)}</div>
   </div></section>
 
-  <section class="section" id="ung-dung"><div class="container-site app-grid">
+  <section class="section compact-benefits"><div class="container-site">
+    <div class="section-intro"><span class="eyebrow">VÌ SAO CẦN GPS?</span><h2 class="h2">Thông tin cần thiết luôn nằm trong tầm tay.</h2></div>
+    <div class="feature-grid">{[[MapPin, 'Theo dõi trực tuyến', 'Cập nhật vị trí phương tiện trên điện thoại.'], [Route, 'Lịch sử hành trình', 'Xem lại quãng đường, thời gian và tốc độ.'], [BellRing, 'Cảnh báo thông minh', 'Nhận thông báo rung, mất nguồn hoặc vượt tốc.'], [ShieldCheck, 'Quản lý nhiều xe', 'Theo dõi nhiều thiết bị trong cùng tài khoản.']].map(([Icon, title, desc]) => <article class="card feature-card"><div class="icon-box"><Icon size={27}/></div><h3>{title}</h3><p>{desc}</p></article>)}</div>
+  </div></section>
+
+  <section class="gift-section" aria-label="Ưu đãi khi mua thiết bị"><div class="container-site"><div class="gift-layout gift-layout-compact">
+    <div class="gift-main"><span class="gift-eyebrow"><Gift size={17}/> ƯU ĐÃI DÀNH CHO KHÁCH HÀNG MỚI</span><h2 class="gift-title"><span>Mua thiết bị, nhận ngay bộ quà tặng</span></h2><p class="gift-copy">12 tháng SIM Data 4G và sử dụng IOPGPS. Thiết bị được kích hoạt sẵn trước khi giao.</p>
+      <div class="gift-quick-list"><span><CheckCircle2 size={19}/> SIM Data 4G</span><span><CheckCircle2 size={19}/> IOPGPS 12 tháng</span><span><CheckCircle2 size={19}/> Bảo hành 12 tháng</span><span><CheckCircle2 size={19}/> Hỗ trợ cài đặt</span></div>
+      <div class="gift-cta-row"><a class="gift-primary-btn" href="#chon-thiet-bi" data-track="gift_choose_product"><Gift size={21}/> CHỌN SẢN PHẨM</a><a class="gift-hotline-btn" href={`tel:${contact.hotlineTel}`} data-track="gift_phone"><Phone size={21}/> GỌI {contact.hotlineDisplay}</a></div><p class="gift-renewal gift-renewal-left">Từ năm thứ hai áp dụng phí duy trì theo chính sách tại thời điểm gia hạn.</p>
+    </div>
+    <aside class="gift-aside gift-aside-compact"><div class="gift-card gift-card-compact"><span class="gift-ribbon">QUÀ TẶNG</span><div class="gift-visual"><img src="/assets/app/gift-box-antam.webp" alt="Hộp quà tặng An Tâm GPS" width="800" height="533" loading="lazy" decoding="async"/></div><div class="gift-card-content"><h3>BỘ QUÀ TẶNG</h3><span class="gift-duration">12 THÁNG</span><p class="gift-activation">Đã kích hoạt trước khi giao</p></div></div></aside>
+  </div></div></section>
+
+  <section class="section" id="ung-dung"><div class="container-site app-grid app-grid-compact">
     <div class="app-image-wrap"><img src="/assets/app/app-phone.webp" alt="Ứng dụng IOPGPS hiển thị trên điện thoại" class="app-image" width="894" height="1500" loading="lazy" decoding="async"/></div>
-    <div><span class="eyebrow">ỨNG DỤNG IOPGPS</span><h2 class="h2">Quản lý mọi lúc, trên mọi thiết bị.</h2><p class="lead">Theo dõi vị trí, xem lịch sử, nhận cảnh báo và quản lý nhiều phương tiện trong cùng một tài khoản đơn giản, trực quan.</p>
-      <div class="check-list">{['Tặng SIM Data trong 12 tháng đầu','Tặng quyền sử dụng IOPGPS trong 12 tháng đầu','Kích hoạt sẵn trước khi giao','Hỗ trợ cài đặt và hướng dẫn sử dụng'].map(item=><div class="check-row"><CheckCircle2 size={22}/><span>{item}</span></div>)}</div>
-      <div class="app-download-row"><a href={appLinks.smartDownload} aria-label="Mở trang tải IOPGPS"><img src="/assets/app/qrcodeiopgps.svg" alt="QR tải ứng dụng" width="270" height="270" loading="lazy"/></a><div><b>Quét mã để tải ứng dụng</b><span>Mã QR tự chuyển tới App Store hoặc Google Play theo điện thoại.</span><a class="web-app-link" href={appLinks.web} target="_blank" rel="noopener">Mở ứng dụng trên Web <ExternalLink size={16}/></a></div></div>
-      <div class="app-actions"><a class="btn btn-primary" href="/iopgps/">Tìm hiểu IOPGPS</a><a class="btn btn-ghost" href="/tai-xuong/">Tải ứng dụng & tài liệu</a></div>
+    <div><span class="eyebrow">ỨNG DỤNG IOPGPS</span><h2 class="h2">Quản lý mọi lúc, trên mọi thiết bị.</h2><p class="lead">Theo dõi vị trí, lịch sử, cảnh báo và nhiều phương tiện trong cùng một tài khoản.</p><div class="check-list">{['Tài khoản được thiết lập sẵn', 'Hướng dẫn sử dụng khi bàn giao', 'Sử dụng trên điện thoại và Web'].map(item => <div class="check-row"><CheckCircle2 size={22}/><span>{item}</span></div>)}</div>
+      <div class="app-download-row"><a href={appLinks.smartDownload} aria-label="Mở trang tải IOPGPS" data-track="download_app_qr"><img src="/assets/app/qrcodeiopgps.svg" alt="QR tải ứng dụng" width="270" height="270" loading="lazy"/></a><div><b>Quét mã để tải ứng dụng</b><span>Tự chuyển tới App Store hoặc Google Play theo điện thoại.</span><a class="web-app-link" href={appLinks.web} target="_blank" rel="noopener" data-track="open_iopgps_web">Mở ứng dụng trên Web <ExternalLink size={16}/></a></div></div><div class="app-actions"><a class="btn btn-primary" href="/iopgps/">Xem chức năng ứng dụng</a><a class="btn btn-ghost" href="/tai-xuong/">Tải ứng dụng & tài liệu</a></div>
     </div>
   </div></section>
 
-  <section class="section section-soft" id="ho-tro"><div class="container-site">
-    <div class="section-intro"><span class="eyebrow">HỆ SINH THÁI AN TÂM GPS</span><h2 class="h2">Thiết bị, SIM, ứng dụng và hỗ trợ trong một giải pháp.</h2><p class="lead">Khách hàng không phải tự tìm từng dịch vụ rời rạc. Mọi thành phần được chuẩn bị đồng bộ để thiết bị hoạt động ổn định ngay khi nhận.</p></div>
-    <div class="ecosystem-grid">{[[RadioTower,'SIM 4G tặng kèm','Kết nối dữ liệu được chuẩn bị và kích hoạt sẵn.'],[Smartphone,'Ứng dụng IOPGPS','Giao diện trực quan trên điện thoại và nền tảng Web.'],[BadgeCheck,'Bảo hành 12 tháng','Chính sách rõ ràng, hỗ trợ nhanh khi thiết bị có lỗi.'],[Headphones,'Hỗ trợ kỹ thuật','Tư vấn lắp đặt, cài ứng dụng và sử dụng tận tâm.']].map(([Icon,title,desc])=><article class="card ecosystem-card"><div class="icon-box"><Icon size={27}/></div><h3>{title}</h3><p>{desc}</p></article>)}</div>
-    <div class="cta-band"><div><h3>Cần chọn thiết bị phù hợp cho phương tiện?</h3><p>Đội ngũ An Tâm GPS tư vấn đúng nhu cầu, đúng loại xe và đúng phương án lắp đặt.</p></div><a class="btn btn-green" href={`tel:${contact.hotlineTel}`}>Gọi {contact.hotlineDisplay}</a></div>
+  <section class="section section-soft phase-two-section" id="phu-kien"><div class="container-site">
+    <div class="phase-two-head"><div><span class="eyebrow eyebrow-green">TƯ VẤN PHỤ KIỆN — ĐỢT 2</span><h2 class="h2">Phụ kiện liên quan, được chọn lọc trước khi giới thiệu.</h2><p class="lead">ANTAM GPS sẽ xây dựng khu tư vấn camera hành trình, cảm biến áp suất lốp và phụ kiện an toàn. Khách hàng xem đánh giá tại website rồi mua qua gian hàng chính hãng trên sàn.</p></div><a class="btn btn-ghost" href="/phu-kien/">Xem khu tư vấn phụ kiện <ArrowRight size={17}/></a></div>
+    <div class="accessory-grid">{accessoryCategories.map(({ icon: Icon, title, text }) => <article class="accessory-card"><span><Icon size={25}/></span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div><p class="affiliate-note"><ShieldCheck size={18}/> Mọi liên kết tiếp thị sẽ được ghi rõ. ANTAM GPS ưu tiên độ phù hợp, nguồn gốc và bảo hành trước mức hoa hồng.</p>
   </div></section>
+
+  <section class="section partner-teaser"><div class="container-site partner-teaser-card"><div><span class="eyebrow eyebrow-on-dark">DÀNH CHO GARA & ĐẠI LÝ</span><h2>Thêm dịch vụ cho khách, thêm nguồn doanh thu cho gara.</h2><p>Hợp tác lắp đặt GPS, chăm sóc khách hàng và chuẩn bị nền tảng giới thiệu sản phẩm có ghi nhận nguồn rõ ràng.</p></div><div class="partner-teaser-actions"><a class="btn btn-green" href="/doi-tac/">Tìm hiểu chương trình đối tác</a><a class="btn partner-zalo" href={contact.zaloUrl} target="_blank" rel="noopener">Trao đổi qua Zalo</a></div></div></section>
 
   <WarrantySummary />
+  <section class="section home-final-cta"><div class="container-site cta-band final-cta-band"><div><h3>Chưa biết thiết bị nào phù hợp?</h3><p>Cho chúng tôi biết loại xe và nhu cầu sử dụng, bạn sẽ nhận được phương án ngắn gọn, dễ hiểu.</p></div><div class="final-cta-actions"><a class="btn btn-green" href={`tel:${contact.hotlineTel}`} data-track="final_phone"><Phone size={18}/> Gọi {contact.hotlineDisplay}</a><a class="btn final-zalo" href={contact.zaloUrl} target="_blank" rel="noopener" data-track="final_zalo"><Headphones size={18}/> Tư vấn Zalo</a></div></div></section>
 </main>
 <Footer />
 <ContactDock />
