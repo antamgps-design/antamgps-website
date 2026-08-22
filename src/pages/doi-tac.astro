@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactDock from '../components/ContactDock.astro';
+import { Building2, Wrench, Users, BadgeDollarSign, QrCode, ShieldCheck, MessageCircle, CheckCircle2 } from 'lucide-astro';
+import { contact } from '../data/site';
+---
+<BaseLayout title="Hợp tác gara và đại lý | An Tâm GPS" description="Chương trình hợp tác lắp đặt GPS, chăm sóc khách hàng và giới thiệu sản phẩm dành cho gara, thợ kỹ thuật và đại lý.">
+  <Header />
+  <main>
+    <section class="subpage-hero subpage-hero-dark partner-page-hero"><div class="container-site partner-page-grid">
+      <div class="subpage-copy"><span class="eyebrow eyebrow-on-dark">ĐỐI TÁC GARA & ĐẠI LÝ</span><h1>Thêm dịch vụ hữu ích cho khách hàng tại gara.</h1><p>ANTAM GPS hướng tới mô hình hợp tác rõ việc, rõ quyền lợi và có hỗ trợ kỹ thuật. Gara tập trung chăm sóc khách; hệ thống hỗ trợ sản phẩm, kích hoạt và theo dõi nguồn giới thiệu.</p><div class="subpage-actions"><a class="btn btn-green" href={contact.zaloUrl} target="_blank" rel="noopener" data-track="partner_zalo"><MessageCircle size={18}/> Trao đổi hợp tác</a><a class="btn hero-secondary" href={`tel:${contact.hotlineTel}`} data-track="partner_phone">Gọi {contact.hotlineDisplay}</a></div></div>
+      <div class="partner-hero-card"><Building2 size={44}/><b>Dành cho gara, thợ kỹ thuật và đại lý xe</b><p>Bắt đầu từ lắp đặt GPS; mở rộng dần sang chăm sóc khách hàng và giới thiệu sản phẩm liên quan.</p></div>
+    </div></section>
+
+    <section class="section"><div class="container-site">
+      <div class="section-intro"><span class="eyebrow">GIÁ TRỊ HỢP TÁC</span><h2 class="h2">Gara có thêm dịch vụ, khách hàng có nơi hỗ trợ gần nhất.</h2></div>
+      <div class="partner-value-grid">
+        <article class="card"><Wrench size={28}/><h3>Lắp đặt và bàn giao</h3><p>Quy trình cấu hình, kích hoạt và hướng dẫn khách được chuẩn hóa.</p></article>
+        <article class="card"><Users size={28}/><h3>Chăm sóc khách hàng</h3><p>Gara có thêm lý do chính đáng để giữ liên hệ và hỗ trợ khách lâu dài.</p></article>
+        <article class="card"><BadgeDollarSign size={28}/><h3>Quyền lợi minh bạch</h3><p>Hoa hồng chỉ ghi nhận sau khi đơn hàng và điều kiện đối soát hoàn tất.</p></article>
+        <article class="card"><ShieldCheck size={28}/><h3>Hỗ trợ kỹ thuật</h3><p>ANTAM GPS hỗ trợ xử lý cấu hình, ứng dụng và tình huống phát sinh.</p></article>
+      </div>
+    </div></section>
+
+    <section class="section section-soft"><div class="container-site partner-flow-grid">
+      <div><span class="eyebrow eyebrow-green">CẤU TRÚC ĐỢT 2</span><h2 class="h2">Chuẩn bị sẵn luồng giới thiệu có thể kiểm tra.</h2><p class="lead">Giai đoạn đầu chưa cần một ứng dụng riêng. Mỗi đối tác sử dụng mã hoặc QR để hệ thống nhận biết nguồn khách.</p></div>
+      <ol class="numbered-steps numbered-steps-compact"><li><span>01</span><div><b>Tạo hồ sơ đối tác</b><p>Xác nhận gara, người phụ trách và khu vực hoạt động.</p></div></li><li><span>02</span><div><b>Cấp mã hoặc QR</b><p>Mỗi nguồn giới thiệu có mã riêng, không ghi nhận bằng lời nói.</p></div></li><li><span>03</span><div><b>Đối soát đơn hợp lệ</b><p>Chỉ ghi nhận sau thanh toán, lắp đặt và thời gian đổi trả.</p></div></li><li><span>04</span><div><b>Thanh toán theo kỳ</b><p>Bảng kê rõ đơn, trạng thái và khoản hoa hồng được duyệt.</p></div></li></ol>
+    </div></section>
+
+    <section class="section"><div class="container-site partner-ready-card"><QrCode size={38}/><div><h2>Hiện tại chương trình đang tiếp nhận đối tác thử nghiệm.</h2><p>Ưu tiên gara có khả năng lắp điện xe và sẵn sàng thực hiện đúng quy trình bàn giao cho khách hàng.</p><div class="partner-ready-list"><span><CheckCircle2 size={18}/> Không yêu cầu tải app riêng</span><span><CheckCircle2 size={18}/> Hỗ trợ tài liệu và kỹ thuật</span><span><CheckCircle2 size={18}/> Đối soát theo đơn hợp lệ</span></div></div><a class="btn btn-green" href={contact.zaloUrl} target="_blank" rel="noopener" data-track="partner_join_zalo">Đăng ký trao đổi qua Zalo</a></div></section>
+  </main>
+  <Footer />
+  <ContactDock />
+</BaseLayout>

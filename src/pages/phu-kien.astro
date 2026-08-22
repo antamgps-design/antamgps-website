@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactDock from '../components/ContactDock.astro';
+import { Camera, Gauge, Wrench, ShieldCheck, Store, ClipboardCheck, ArrowRight, MessageCircle, CheckCircle2 } from 'lucide-astro';
+import { contact } from '../data/site';
+
+const categories = [
+  { icon: Camera, title: 'Camera hành trình', text: 'Camera trước, camera trước – sau và lựa chọn phù hợp cho xe cá nhân hoặc xe dịch vụ.', status: 'Đang chọn sản phẩm để kiểm chứng' },
+  { icon: Gauge, title: 'Cảm biến áp suất lốp', text: 'Ưu tiên khả năng cảnh báo dễ hiểu, lắp đặt thuận tiện và bảo hành minh bạch.', status: 'Đang xây dựng bài hướng dẫn chọn mua' },
+  { icon: Wrench, title: 'Phụ kiện an toàn', text: 'Giá đỡ, sạc và nhóm phụ kiện thực sự hữu ích trong quá trình sử dụng xe.', status: 'Sẽ bổ sung theo kết quả thử nghiệm' },
+];
+---
+<BaseLayout title="Tư vấn phụ kiện ô tô, xe máy | An Tâm GPS" description="ANTAM GPS chọn lọc camera hành trình, cảm biến áp suất lốp và phụ kiện an toàn theo nhu cầu sử dụng thực tế.">
+  <Header />
+  <main>
+    <section class="subpage-hero subpage-hero-light accessory-hero"><div class="container-site subpage-heading">
+      <span class="eyebrow eyebrow-green">TƯ VẤN PHỤ KIỆN</span>
+      <h1>Chọn đúng sản phẩm trước khi bấm mua.</h1>
+      <p>ANTAM GPS tổng hợp lựa chọn theo nhu cầu thực tế, ưu tiên nguồn gốc, bảo hành và khả năng sử dụng lâu dài. Website không thu tiền thay cho sàn và không tự ý đổi đường dẫn sau khi khách bấm mua.</p>
+    </div></section>
+
+    <section class="section"><div class="container-site">
+      <div class="section-intro"><span class="eyebrow">DANH MỤC ĐANG XÂY DỰNG</span><h2 class="h2">Ba nhóm gần nhất với nhu cầu bảo vệ và sử dụng xe.</h2><p class="lead">Danh sách cụ thể chỉ được công bố sau khi kiểm tra thông tin gian hàng, chính sách bảo hành và mức độ phù hợp.</p></div>
+      <div class="accessory-category-grid">{categories.map(({ icon: Icon, title, text, status }) => <article class="card accessory-category-card"><span class="accessory-category-icon"><Icon size={30}/></span><h2>{title}</h2><p>{text}</p><span class="category-status"><ClipboardCheck size={17}/>{status}</span></article>)}</div>
+    </div></section>
+
+    <section class="section section-soft"><div class="container-site editorial-grid">
+      <div><span class="eyebrow eyebrow-green">NGUYÊN TẮC GIỚI THIỆU</span><h2 class="h2">Hoa hồng đứng sau sự phù hợp.</h2><p class="lead">Một sản phẩm có mức hoa hồng cao nhưng nguồn gốc hoặc bảo hành không rõ sẽ không được ưu tiên.</p></div>
+      <ul class="editorial-checks">
+        <li><ShieldCheck size={21}/><div><b>Ghi rõ liên kết tiếp thị</b><span>Khách hàng luôn biết ANTAM GPS có thể nhận hoa hồng.</span></div></li>
+        <li><Store size={21}/><div><b>Ưu tiên gian hàng chính hãng</b><span>Giá, giao hàng và bảo hành do sàn hoặc người bán áp dụng.</span></div></li>
+        <li><CheckCircle2 size={21}/><div><b>Đánh giá theo nhu cầu</b><span>Nêu rõ sản phẩm phù hợp với ai và trường hợp nào không nên mua.</span></div></li>
+      </ul>
+    </div></section>
+
+    <section class="section"><div class="container-site content-roadmap">
+      <div><span class="eyebrow">NỘI DUNG SẮP CÓ</span><h2 class="h2">Bài tư vấn ngắn, dễ kiểm tra trước khi mua.</h2></div>
+      <div class="roadmap-list"><span>01</span><p>Camera hành trình một mắt hay trước – sau?</p><span>02</span><p>Chọn camera cho xe cá nhân và xe dịch vụ.</p><span>03</span><p>Cảm biến áp suất lốp gắn ngoài hay gắn trong?</p><span>04</span><p>Những phụ kiện xe không nên mua chỉ vì giá rẻ.</p></div>
+    </div></section>
+
+    <section class="compact-section"><div class="container-site cta-band"><div><h3>Bạn đang cần tư vấn một phụ kiện cụ thể?</h3><p>Gửi tên xe và nhu cầu sử dụng. ANTAM GPS sẽ ghi nhận để ưu tiên nội dung phù hợp.</p></div><a class="btn btn-green" href={contact.zaloUrl} target="_blank" rel="noopener" data-track="accessory_zalo"><MessageCircle size={18}/> Gửi nhu cầu qua Zalo <ArrowRight size={16}/></a></div></section>
+  </main>
+  <Footer />
+  <ContactDock />
+</BaseLayout>

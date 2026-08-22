@@ -5,11 +5,11 @@ import { contact } from '../data/site';
 const currentPath = Astro.url.pathname;
 const navItems = [
   { label: 'Trang chủ', href: '/', match: '/' },
-  { label: 'Giải pháp', href: '/#giai-phap', match: '/giai-phap/' },
   { label: 'Sản phẩm', href: '/san-pham/', match: '/san-pham/' },
+  { label: 'Giải pháp', href: '/#giai-phap', match: '/giai-phap/' },
   { label: 'Ứng dụng', href: '/iopgps/', match: '/iopgps/' },
+  { label: 'Phụ kiện', href: '/phu-kien/', match: '/phu-kien/' },
   { label: 'Hướng dẫn', href: '/huong-dan/', match: '/huong-dan/' },
-  { label: 'Bảo hành', href: '/bao-hanh/', match: '/bao-hanh/' },
 ];
 
 const isActive = (match: string) =>
@@ -28,8 +28,8 @@ const isActive = (match: string) =>
       {navItems.map((item) => <a href={item.href} class:list={{ 'is-active': isActive(item.match) }}>{item.label}</a>)}
     </nav>
     <div class="header-actions">
-      <a class="hotline" href={`tel:${contact.hotlineTel}`}><Phone size={17} /> {contact.hotlineDisplay}</a>
-      <a class="btn btn-primary" href={contact.zaloUrl} target="_blank" rel="noopener"><MessageCircle size={17} /> Tư vấn ngay</a>
+      <a class="hotline" href={`tel:${contact.hotlineTel}`} data-track="header_phone"><Phone size={17} /> {contact.hotlineDisplay}</a>
+      <a class="btn btn-primary" href={contact.zaloUrl} target="_blank" rel="noopener" data-track="header_zalo"><MessageCircle size={17} /> Tư vấn ngay</a>
     </div>
     <button id="menu-open" class="mobile-trigger" aria-label="Mở menu" aria-controls="mobile-menu" aria-expanded="false"><Menu /></button>
   </div>
@@ -45,8 +45,8 @@ const isActive = (match: string) =>
       {navItems.map((item) => <a href={item.href} class:list={{ 'is-active': isActive(item.match) }}>{item.label}</a>)}
     </nav>
     <div class="mobile-menu-actions">
-      <a class="btn btn-primary" href={`tel:${contact.hotlineTel}`}><Phone size={18} /> Gọi {contact.hotlineDisplay}</a>
-      <a class="btn btn-ghost" href={contact.zaloUrl} target="_blank" rel="noopener"><MessageCircle size={18} /> Tư vấn qua Zalo</a>
+      <a class="btn btn-primary" href={`tel:${contact.hotlineTel}`} data-track="mobile_menu_phone"><Phone size={18} /> Gọi {contact.hotlineDisplay}</a>
+      <a class="btn btn-ghost" href={contact.zaloUrl} target="_blank" rel="noopener" data-track="mobile_menu_zalo"><MessageCircle size={18} /> Tư vấn qua Zalo</a>
     </div>
   </div>
 </div>

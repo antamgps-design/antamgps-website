@@ -72,5 +72,20 @@ const extraSchemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 </head>
 <body>
   <slot />
+  <script is:inline>
+    document.addEventListener('click', (event) => {
+      const target = event.target instanceof Element ? event.target.closest('[data-track]') : null;
+      if (!target) return;
+      const detail = {
+        event: target.getAttribute('data-track'),
+        label: target.getAttribute('data-label') || target.textContent?.trim().replace(/\s+/g, ' ').slice(0, 100),
+        page_path: location.pathname,
+        destination: target instanceof HTMLAnchorElement ? target.href : undefined,
+      };
+      window.dispatchEvent(new CustomEvent('antamgps:interaction', { detail }));
+      if (typeof window.zaraz?.track === 'function') window.zaraz.track(detail.event, detail);
+      if (typeof window.gtag === 'function') window.gtag('event', detail.event, detail);
+    });
+  </script>
 </body>
 </html>
