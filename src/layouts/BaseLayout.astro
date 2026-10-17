@@ -7,14 +7,16 @@ interface Props {
   description?: string;
   image?: string;
   noindex?: boolean;
+  bodyClass?: string;
   schema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
   title = 'An Tâm GPS',
   description = 'Giải pháp định vị GPS và quản lý phương tiện toàn diện.',
-  image = '/assets/logo/logo-antam-gps-v35.png',
+  image = '/assets/logo/logo-share.png',
   noindex = false,
+  bodyClass = "",
   schema,
 } = Astro.props;
 
@@ -26,7 +28,7 @@ const organizationSchema = {
   name: 'An Tâm Smart Solutions',
   alternateName: 'An Tâm GPS',
   url: 'https://antamgps.vn',
-  logo: 'https://antamgps.vn/assets/logo/logo-antam-gps-v35.png',
+  logo: 'https://antamgps.vn/assets/logo/logo-share.png',
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: '+84-866-306-478',
@@ -47,11 +49,10 @@ const extraSchemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
   <meta name="theme-color" content="#12368a" />
   <meta name="apple-mobile-web-app-title" content="antamgps" />
   <link rel="canonical" href={canonical} />
-  <link rel="icon" href="/favicon-antam-v36.ico" sizes="any" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo/favicon-antam-32-v36.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo/favicon-antam-16-v36.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon-antam-v36.png" />
-  <link rel="manifest" href="/site.webmanifest?v=36" />
+  <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg?v=20261017" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261017" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png?v=20261017" />
+  <link rel="manifest" href="/site.webmanifest?v=20261017" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -70,7 +71,7 @@ const extraSchemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
   {extraSchemas.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}
   <title>{title}</title>
 </head>
-<body>
+<body class={bodyClass}>
   <slot />
 </body>
 </html>

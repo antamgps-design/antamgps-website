@@ -3,188 +3,71 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ContactDock from '../components/ContactDock.astro';
-import ProductCard from '../components/ProductCard.astro';
-import WarrantySummary from '../components/WarrantySummary.astro';
 import { products } from '../data/products';
 import { appLinks, contact } from '../data/site';
-import { MapPin, BellRing, Route, ShieldCheck, Smartphone, Headphones, CheckCircle2, RadioTower, BadgeCheck, ExternalLink, Gift, Phone, Truck } from 'lucide-astro';
+import { ArrowRight, ArrowUpRight, MapPin, Route, BellRing, KeyRound, ShieldCheck, Car, Smartphone, RadioTower, Check, CheckCircle2, Headphones, Phone, Download, Play, Cable, Settings2, Clock3, Building2, Wrench, Users, Bike } from 'lucide-astro';
+import '../styles/home-iot.css';
+const features = [
+  [MapPin,'Vị trí trực tuyến','Theo dõi vị trí phương tiện trên bản đồ ngay trong ứng dụng.'],
+  [Route,'Lịch sử hành trình','Xem lại tuyến đường, thời gian di chuyển và những lần dừng đỗ.'],
+  [BellRing,'Cảnh báo bất thường','Theo dõi thông báo rung, di chuyển hoặc mất nguồn theo cấu hình.'],
+  [KeyRound,'Trạng thái khóa điện','Nhận biết bật / tắt khóa điện với thiết bị và cách đấu nối phù hợp.'],
+  [ShieldCheck,'Vùng an toàn','Thiết lập khu vực và nhận thông báo khi xe đi vào hoặc đi ra.'],
+  [Car,'Nhiều xe, một tài khoản','Theo dõi các phương tiện được phân quyền trên cùng một giao diện.'],
+];
+const demos = [
+  {id:'vi-tri',short:'Vị trí',title:'Biết xe đang ở đâu.',desc:'Mở bản đồ, chọn phương tiện và xem vị trí cùng trạng thái kết nối. Thông tin quan trọng nằm ngay trên màn hình.',icon:MapPin,image:'/assets/home/app-location-v5.png',width:1379,height:2048,bullets:['Vị trí trên bản đồ','Trạng thái phương tiện','Truy cập ngay trên điện thoại']},
+  {id:'hanh-trinh',short:'Hành trình',title:'Xem lại từng hành trình.',desc:'Chọn khoảng thời gian để xem lại tuyến đường, các điểm dừng và thông tin di chuyển được hệ thống ghi nhận.',icon:Route,image:'/assets/home/app-history-v5.png',width:1250,height:2048,bullets:['Tuyến đường đã di chuyển','Thời gian và điểm dừng','Thông tin tốc độ được ghi nhận']},
+  {id:'canh-bao',short:'Cảnh báo',title:'Nắm bắt những thay đổi.',desc:'Tập trung các thông báo về phương tiện vào nhật ký dễ theo dõi. Loại cảnh báo phụ thuộc model và cấu hình sử dụng.',icon:BellRing,image:'/assets/home/app-alerts-v5.png',width:1242,height:2048,bullets:['Rung và di chuyển bất thường','Bật / tắt khóa điện','Ra / vào vùng an toàn']},
+];
+const audiences = [
+ {x:0,y:0,title:'Đại lý xe máy & xe điện',text:'Bổ sung giải pháp định vị khi giao xe, tư vấn và hỗ trợ kích hoạt cho khách hàng.',tag:'Đối tác kinh doanh'},
+ {x:627,y:0,title:'Tiệm sửa xe',text:'Kết hợp tư vấn thiết bị, lắp đặt và hỗ trợ khách hàng trong quá trình sử dụng.',tag:'Đối tác lắp đặt'},
+ {x:0,y:627,title:'Gara ô tô',text:'Bổ sung giải pháp định vị cho khách hàng có ô tô, đồng hành cùng dịch vụ chăm sóc xe.',tag:'Đối tác dịch vụ'},
+ {x:627,y:627,title:'Gia đình có nhiều phương tiện',text:'Cùng quản lý các xe trong gia đình qua tài khoản và quyền truy cập được thống nhất.',tag:'Khách hàng gia đình'},
+];
+const faq = [
+ ['Thiết bị nào phù hợp với xe của tôi?','H29P là thiết bị có dây dành cho nhiều loại phương tiện. Nếu cần thiết bị không dây hoặc tính năng khác, hãy xem thêm các model và trao đổi loại xe, nguồn điện, nhu cầu sử dụng với An Tâm GPS trước khi chọn.'],
+ ['Gói sử dụng ban đầu gồm những gì?','Theo gói giới thiệu hiện có, khách hàng được tặng 12 tháng SIM Data 4G và sử dụng ứng dụng IOPGPS. Chi phí thiết bị, lắp đặt và phí gia hạn cần được xác nhận trong báo giá trước khi mua.'],
+ ['Có thể quản lý nhiều xe cùng lúc không?','Bạn có thể quản lý nhiều phương tiện trên tài khoản được cấp và theo quyền truy cập tương ứng. An Tâm GPS sẽ hỗ trợ thiết lập phù hợp với số xe và người sử dụng.'],
+ ['Nếu thiết bị mất tín hiệu thì cần làm gì?','Kiểm tra nguồn điện, trạng thái thiết bị và kết nối dữ liệu; sau đó liên hệ hỗ trợ kèm model, IMEI và mô tả hiện tượng. Chất lượng cập nhật phụ thuộc tín hiệu định vị, vùng phủ sóng và cấu hình thiết bị.'],
+];
 ---
-<BaseLayout title="An Tâm GPS — Định vị chính xác, an tâm mọi hành trình" description="Thiết bị định vị GPS 4G, ứng dụng IOPGPS, SIM data và hỗ trợ kỹ thuật toàn diện.">
-<Header />
-<main>
-  <section class="hero">
-    <div class="container-site hero-grid">
-      <div class="hero-intro">
-        <span class="hero-chip">GIẢI PHÁP ĐỊNH VỊ GPS 4G THÔNG MINH</span>
-        <h1>
-  <span class="hero-line hero-green">
-    Biết xe đang ở đâu.
-  </span>
+<BaseLayout bodyClass="iot-home" title="An Tâm GPS — Biết xe đang ở đâu, an tâm mỗi hành trình" description="Giải pháp định vị GPS 4G cho ô tô, xe máy và nhiều phương tiện. Xem vị trí, lịch sử hành trình, cảnh báo và chọn thiết bị phù hợp cùng An Tâm GPS.">
+ <a class="iot-skip" href="#noi-dung">Đi đến nội dung</a><Header />
+ <main id="noi-dung">
+  <section class="iot-hero" aria-labelledby="hero-title"><div class="container-site iot-hero-grid">
+   <div class="iot-hero-copy"><span class="iot-kicker"><span class="iot-live-dot"></span> GIẢI PHÁP ĐỊNH VỊ GPS 4G</span><h1 id="hero-title">Biết xe đang ở đâu.<br/><span>An tâm mỗi hành trình.</span></h1><p>Theo dõi vị trí, xem lại hành trình và nhận cảnh báo phương tiện. Tất cả ngay trên điện thoại của bạn.</p><div class="iot-actions"><a class="iot-button iot-button-primary" href="#ung-dung"><Play size={17}/> Xem cách hoạt động</a><a class="iot-button iot-button-outline iot-hero-consult" href={contact.zaloUrl} target="_blank" rel="noopener"><Headphones size={18}/> Nhận tư vấn</a></div><div class="iot-hero-proof"><span><CheckCircle2 size={17}/> Thiết bị + SIM + ứng dụng</span><span><CheckCircle2 size={17}/> Hỗ trợ cài đặt, sử dụng</span></div><a class="iot-hero-subtle" href="#thiet-bi">Khám phá thiết bị H29P <ArrowRight size={16}/></a></div>
+   <div class="iot-hero-visual"><div class="iot-orbit iot-orbit-one"></div><div class="iot-orbit iot-orbit-two"></div><div class="iot-visual-label"><RadioTower size={18}/><span>Kết nối phương tiện<br/><strong>với điện thoại của bạn</strong></span></div><img class="iot-hero-composition" src="/assets/app/hero-phone-h29p.webp" width="1133" height="1200" alt="Thiết bị H29P và màn hình ứng dụng GPS An Tâm" fetchpriority="high"/><div class="iot-device-label"><span class="iot-live-dot"></span><div><strong>H29P</strong><small>Thiết bị định vị GPS 4G</small></div><ArrowUpRight size={19}/></div></div>
+  </div><div class="container-site iot-use-strip"><span>ĐỒNG HÀNH CÙNG PHƯƠNG TIỆN CỦA BẠN</span><div><Bike size={20}/> Xe máy, xe điện</div><div><Car size={20}/> Ô tô cá nhân</div><div><Building2 size={20}/> Nhiều xe, một tài khoản</div></div></section>
 
-  <span class="hero-line hero-white">
-    An tâm mọi hành trình.
-  </span>
-</h1>
-        <p class="hero-copy">Theo dõi phương tiện theo thời gian thực, nhận cảnh báo thông minh và quản lý nhiều thiết bị trên ứng dụng IOPGPS.</p>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-glow"></div>
-        <img class="hero-composition" src="/assets/app/hero-phone-h29p.webp" alt="Điện thoại hiển thị ứng dụng IOPGPS và thiết bị H29P" width="1200" height="1200" fetchpriority="high" />
-      </div>
-
-      <div class="hero-bottom">
-        <div class="hero-features">
-          <div><b>Định vị chính xác</b><span>Sai số ≤ 5 mét</span></div>
-          <div><b>Kết nối 4G ổn định</b><span>Tốc độ cao</span></div>
-          <div><b>Bảo vệ 24/7</b><span>Cảnh báo tức thời</span></div>
-          <div><b>Pin dự phòng</b><span>Hoạt động liên tục</span></div>
-        </div>
-        <div class="hero-actions"><a class="btn btn-green" href="#san-pham">Khám phá sản phẩm</a><a class="btn hero-secondary" href="/iopgps/">Xem ứng dụng</a></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="gift-section" aria-label="Ưu đãi khi mua thiết bị">
-    <div class="container-site">
-      <div class="gift-layout">
-        <div class="gift-main">
-          <span class="gift-eyebrow">
-            <Gift size={17}/>
-            ƯU ĐÃI DÀNH CHO KHÁCH HÀNG MỚI
-          </span>
-
-          <h2 class="gift-title">
-            <span>Mua thiết bị, nhận ngay bộ quà tặng</span>
-              </h2>
-
-          <p class="gift-copy">
-            12 tháng SIM Data 4G và sử dụng IOPGPS
-          </p>
-
-          <div class="gift-cta-row">
-            <a class="gift-primary-btn" href="#san-pham">
-              <Gift size={21}/>
-              NHẬN ƯU ĐÃI NGAY
-            </a>
-
-            <a class="gift-hotline-btn" href={`tel:${contact.hotlineTel}`}>
-              <Phone size={21}/>
-              TƯ VẤN: {contact.hotlineDisplay}
-            </a>
-          </div>
-
-          <div class="gift-feature-grid">
-            <article class="gift-feature-card">
-              <span class="gift-feature-icon"><CheckCircle2 size={30}/></span>
-              <div>
-                <h3>Kích hoạt sẵn<br/>trước khi giao</h3>
-                <p>Nhận là dùng ngay</p>
-              </div>
-            </article>
-
-            <article class="gift-feature-card">
-              <span class="gift-feature-icon"><Headphones size={30}/></span>
-              <div>
-                <h3>Hỗ trợ kỹ thuật<br/>tận tâm</h3>
-                <p>Đội ngũ luôn sẵn sàng</p>
-              </div>
-            </article>
-
-            <article class="gift-feature-card">
-              <span class="gift-feature-icon"><ShieldCheck size={30}/></span>
-              <div>
-                <h3>Bảo hành<br/>12 tháng</h3>
-                <p>Chính sách rõ ràng</p>
-              </div>
-            </article>
-
-            <article class="gift-feature-card">
-              <span class="gift-feature-icon"><Truck size={30}/></span>
-              <div>
-                <h3>Giao hàng<br/>toàn quốc</h3>
-                <p>Nhanh chóng, an toàn</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="gift-trust-row">
-            <span><ShieldCheck size={17}/>Thiết bị chính hãng</span>
-            <span>Thông tin minh bạch</span>
-            <span>Hoạt động ổn định 24/7</span>
-          </div>
-        </div>
-
-        <aside class="gift-aside">
-          <div class="gift-card">
-            <span class="gift-ribbon">QUÀ TẶNG</span>
-
-            <div class="gift-visual">
-              <img src="/assets/app/gift-box-antam.webp" alt="Hộp quà tặng An Tâm GPS" width="800" height="533" loading="lazy" decoding="async"/>
-            </div>
-
-            <div class="gift-card-content">
-              <h3>BỘ QUÀ TẶNG</h3>
-              <span class="gift-duration">12 THÁNG</span>
-
-              <ul class="gift-list">
-                <li><CheckCircle2 size={20}/>SIM Data 4G</li>
-                <li><CheckCircle2 size={20}/>Ứng dụng IOPGPS</li>
-                <li><CheckCircle2 size={20}/>Tặng kèm 12 tháng</li>
-              </ul>
-
-              <div class="gift-divider"></div>
-
-              <div class="gift-price">TẶNG KÈM</div>
-              <p class="gift-activation">Đã kích hoạt trước khi giao</p>
-              <p class="gift-renewal">Từ năm thứ hai áp dụng phí duy trì theo chính sách tại thời điểm gia hạn.</p>
-            </div>
-          </div>
-
-          <div class="gift-qr-card">
-            <a href={appLinks.smartDownload} aria-label="Mở trang tải ứng dụng IOPGPS"><img src="/assets/app/qrcodeiopgps.svg" alt="QR tải ứng dụng IOPGPS" width="270" height="270" loading="lazy"/></a>
-            <div>
-              <b>Quét mã tải ứng dụng</b>
-              <p>Dùng camera điện thoại để tải nhanh.</p>
-              <a href={appLinks.web} target="_blank" rel="noopener">
-                Mở phiên bản Web <ExternalLink size={15}/>
-              </a>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="giai-phap"><div class="container-site">
-    <div class="section-intro"><span class="eyebrow">VÌ SAO CẦN GPS?</span><h2 class="h2">Bảo vệ phương tiện bằng thông tin chính xác.</h2><p class="lead">Không chỉ biết xe đang ở đâu, hệ thống còn giúp xem lại hành trình, nhận cảnh báo và quản lý nhiều phương tiện trong cùng một tài khoản.</p></div>
-    <div class="feature-grid">
-      {[[MapPin,'Theo dõi trực tuyến','Cập nhật vị trí phương tiện theo thời gian thực trên điện thoại.'],[Route,'Lịch sử hành trình','Xem lại quãng đường, thời gian và tốc độ đã di chuyển.'],[BellRing,'Cảnh báo thông minh','Nhận thông báo rung, di chuyển, mất nguồn hoặc vượt tốc.'],[ShieldCheck,'Bảo vệ 24/7','Tăng khả năng kiểm soát và xử lý nhanh khi có bất thường.']].map(([Icon,title,desc])=><article class="card feature-card"><div class="icon-box"><Icon size={27}/></div><h3>{title}</h3><p>{desc}</p></article>)}
-    </div>
+  <section class="iot-section" id="ung-dung" aria-labelledby="app-title"><div class="container-site"><div class="iot-section-head"><div><span class="iot-kicker">HIỂU SẢN PHẨM QUA MÀN HÌNH</span><h2 id="app-title">Mở ứng dụng.<br/>Nắm bắt hành trình.</h2></div><p>Từ vị trí hiện tại đến lịch sử di chuyển và những cảnh báo cần chú ý — chọn nội dung bên dưới để khám phá.</p></div>
+   <div class="iot-demo" data-app-demo><div class="iot-demo-info"><div class="iot-tabs" role="tablist" aria-label="Khám phá giao diện ứng dụng">{demos.map((demo,index)=><button id={`tab-${demo.id}`} type="button" role="tab" aria-selected={index===0?'true':'false'} aria-controls={`panel-${demo.id}`} tabindex={index===0?0:-1} data-demo-tab={demo.id}><demo.icon size={20}/><span>{demo.short}</span></button>)}</div>
+    {demos.map((demo,index)=><div class="iot-demo-panel" id={`panel-${demo.id}`} role="tabpanel" aria-labelledby={`tab-${demo.id}`} tabindex="0" hidden={index!==0} data-demo-panel={demo.id}><span class="iot-demo-number">0{index+1} / 03</span><h3>{demo.title}</h3><p>{demo.desc}</p><ul>{demo.bullets.map(text=><li><Check size={18}/>{text}</li>)}</ul><a class="iot-text-link" href="/iopgps/">Tìm hiểu ứng dụng IOPGPS <ArrowRight size={17}/></a></div>)}
+   </div><div class="iot-demo-visual"><span class="iot-demo-caption">GIAO DIỆN MINH HỌA</span>{demos.map((demo,index)=><div class="iot-phone-preview" hidden={index!==0} data-demo-image={demo.id}><img class="iot-phone-art" src={demo.image} width={demo.width} height={demo.height} alt={`Màn hình ${demo.short.toLowerCase()} ứng dụng GPS An Tâm`} loading="lazy" decoding="async"/></div>)}</div></div>
   </div></section>
 
-  <section class="section section-soft" id="san-pham"><div class="container-site">
-    <div class="section-intro product-intro"><span class="eyebrow eyebrow-green">SẢN PHẨM NỔI BẬT</span><h2 class="h2 section-title-no-margin">Thiết bị định vị thông minh</h2></div>
-    <div class="product-grid">{products.map(product=><ProductCard product={product}/>)}</div>
-  </div></section>
+  <section class="iot-section iot-soft" id="tinh-nang"><div class="container-site"><div class="iot-section-head"><div><span class="iot-kicker">NHỮNG ĐIỀU THIẾT THỰC</span><h2>Không chỉ là một<br/>chấm trên bản đồ.</h2></div><p>Sáu nhóm tính năng giúp bạn theo dõi phương tiện và chủ động hơn khi có tình huống cần kiểm tra.</p></div><div class="iot-feature-grid">{features.map(([Icon,title,description],index)=><article class="iot-feature"><div class="iot-feature-top"><span class="iot-icon"><Icon size={25}/></span><span class="iot-feature-index">0{index+1}</span></div><h3>{title}</h3><p>{description}</p></article>)}</div></div></section>
 
-  <section class="section" id="ung-dung"><div class="container-site app-grid">
-    <div class="app-image-wrap"><img src="/assets/app/app-phone.webp" alt="Ứng dụng IOPGPS hiển thị trên điện thoại" class="app-image" width="894" height="1500" loading="lazy" decoding="async"/></div>
-    <div><span class="eyebrow">ỨNG DỤNG IOPGPS</span><h2 class="h2">Quản lý mọi lúc, trên mọi thiết bị.</h2><p class="lead">Theo dõi vị trí, xem lịch sử, nhận cảnh báo và quản lý nhiều phương tiện trong cùng một tài khoản đơn giản, trực quan.</p>
-      <div class="check-list">{['Tặng SIM Data trong 12 tháng đầu','Tặng quyền sử dụng IOPGPS trong 12 tháng đầu','Kích hoạt sẵn trước khi giao','Hỗ trợ cài đặt và hướng dẫn sử dụng'].map(item=><div class="check-row"><CheckCircle2 size={22}/><span>{item}</span></div>)}</div>
-      <div class="app-download-row"><a href={appLinks.smartDownload} aria-label="Mở trang tải IOPGPS"><img src="/assets/app/qrcodeiopgps.svg" alt="QR tải ứng dụng" width="270" height="270" loading="lazy"/></a><div><b>Quét mã để tải ứng dụng</b><span>Mã QR tự chuyển tới App Store hoặc Google Play theo điện thoại.</span><a class="web-app-link" href={appLinks.web} target="_blank" rel="noopener">Mở ứng dụng trên Web <ExternalLink size={16}/></a></div></div>
-      <div class="app-actions"><a class="btn btn-primary" href="/iopgps/">Tìm hiểu IOPGPS</a><a class="btn btn-ghost" href="/tai-xuong/">Tải ứng dụng & tài liệu</a></div>
-    </div>
-  </div></section>
+  <section class="iot-section" id="giai-phap"><div class="container-site"><div class="iot-section-head"><div><span class="iot-kicker">TÌM GIẢI PHÁP CỦA BẠN</span><h2>Mỗi nhu cầu.<br/>Một cách đồng hành.</h2></div><p>Dù mua để sử dụng hay bổ sung dịch vụ cho cửa hàng, hãy bắt đầu từ đúng nhu cầu thực tế.</p></div><div class="iot-audience-grid">{audiences.map(a=><article class="iot-audience"><div class="iot-audience-photo"><svg class="iot-audience-art" viewBox={`${a.x} ${a.y} 627 627`} preserveAspectRatio="xMidYMid slice" role="img" aria-label={`Ảnh minh họa ${a.title.toLowerCase()}`}><image href="/assets/home/audience-scenes-v2.webp" width="1254" height="1254"/></svg></div><div class="iot-audience-body"><span>{a.tag}</span><h3>{a.title}</h3><p>{a.text}</p></div></article>)}</div><div class="iot-business-note"><Building2 size={26}/><div><h3>Doanh nghiệp cần quản lý nhiều xe?</h3><p>Trao đổi số lượng phương tiện, người sử dụng và cách phân quyền để chọn phương án phù hợp.</p></div><a class="iot-text-link" href={contact.zaloUrl} target="_blank" rel="noopener">Trao đổi nhu cầu <ArrowUpRight size={18}/></a></div></div></section>
 
-  <section class="section section-soft" id="ho-tro"><div class="container-site">
-    <div class="section-intro"><span class="eyebrow">HỆ SINH THÁI AN TÂM GPS</span><h2 class="h2">Thiết bị, SIM, ứng dụng và hỗ trợ trong một giải pháp.</h2><p class="lead">Khách hàng không phải tự tìm từng dịch vụ rời rạc. Mọi thành phần được chuẩn bị đồng bộ để thiết bị hoạt động ổn định ngay khi nhận.</p></div>
-    <div class="ecosystem-grid">{[[RadioTower,'SIM 4G tặng kèm','Kết nối dữ liệu được chuẩn bị và kích hoạt sẵn.'],[Smartphone,'Ứng dụng IOPGPS','Giao diện trực quan trên điện thoại và nền tảng Web.'],[BadgeCheck,'Bảo hành 12 tháng','Chính sách rõ ràng, hỗ trợ nhanh khi thiết bị có lỗi.'],[Headphones,'Hỗ trợ kỹ thuật','Tư vấn lắp đặt, cài ứng dụng và sử dụng tận tâm.']].map(([Icon,title,desc])=><article class="card ecosystem-card"><div class="icon-box"><Icon size={27}/></div><h3>{title}</h3><p>{desc}</p></article>)}</div>
-    <div class="cta-band"><div><h3>Cần chọn thiết bị phù hợp cho phương tiện?</h3><p>Đội ngũ An Tâm GPS tư vấn đúng nhu cầu, đúng loại xe và đúng phương án lắp đặt.</p></div><a class="btn btn-green" href={`tel:${contact.hotlineTel}`}>Gọi {contact.hotlineDisplay}</a></div>
-  </div></section>
+  <section class="iot-section iot-product-section" id="thiet-bi"><div class="container-site iot-product-layout"><div class="iot-product-visual"><div class="iot-product-visual-top"><span>THIẾT BỊ CHỦ LỰC</span><span>GPS 4G</span></div><img src="/assets/products/h29p-clean.webp" alt="Thiết bị định vị H29P có dây" width="900" height="900" loading="lazy"/><div class="iot-product-visual-bottom"><span>H29P</span><small>Ảnh sản phẩm</small></div></div><div class="iot-product-copy"><span class="iot-kicker">NHỎ GỌN TRONG XE. RÕ RÀNG TRÊN APP.</span><h2>H29P.<br/>Kết nối chiếc xe của bạn.</h2><p>Thiết bị GPS 4G có dây, phù hợp với nhiều loại xe máy, xe điện và ô tô. Lựa chọn cấu hình, vị trí lắp và cách đấu nối theo từng phương tiện.</p><dl class="iot-specs"><div><dt><RadioTower size={18}/> Kết nối dữ liệu</dt><dd>4G</dd></div><div><dt><Cable size={18}/> Điện áp hoạt động</dt><dd>9–90V DC</dd></div><div><dt><Settings2 size={18}/> Trạng thái khóa điện</dt><dd>Hỗ trợ ACC</dd></div><div><dt><Clock3 size={18}/> Chu kỳ tải dữ liệu</dt><dd>Khoảng 10 giây/lần</dd></div><div><dt><Smartphone size={18}/> Nền tảng quản lý</dt><dd>Web / App</dd></div></dl><p class="iot-small-note">Thông số theo tài liệu H29P. Khả năng sử dụng thực tế phụ thuộc điều kiện lắp đặt, tín hiệu và cấu hình.</p><div class="iot-actions"><a class="iot-button iot-button-primary" href="/san-pham/h29p/">Xem chi tiết H29P <ArrowRight size={18}/></a><a class="iot-text-link" href={contact.zaloUrl} target="_blank" rel="noopener">Tư vấn lắp đặt <ArrowUpRight size={18}/></a></div></div></div></section>
 
-  <WarrantySummary />
-</main>
-<Footer />
-<ContactDock />
+  <section class="iot-section" id="san-pham"><div class="container-site"><div class="iot-section-head"><div><span class="iot-kicker">THÊM LỰA CHỌN CHO TỪNG NHU CẦU</span><h2>Chọn đúng thiết bị.<br/>Dùng đúng mục đích.</h2></div><a class="iot-text-link" href="/san-pham/">Tất cả sản phẩm <ArrowRight size={18}/></a></div><div class="iot-other-products">{products.filter(p=>p.slug!=='h29p').map(p=><a class="iot-other-product" href={`/san-pham/${p.slug}/`}><div class="iot-other-media"><img src={p.image} alt={`Thiết bị định vị ${p.name}`} width="500" height="400" loading="lazy"/></div><div class="iot-other-content"><span>{p.category}</span><h3>{p.name}<ArrowUpRight size={22}/></h3><p>{p.slug==='s20'?'Thiết bị không dây, gắn bằng nam châm. Phù hợp khi cần phương án linh hoạt.':p.slug==='gs12'?'GPS có dây, hỗ trợ theo dõi vị trí và trạng thái phương tiện.':'Thiết bị có dây nhỏ gọn, dành cho nhiều loại phương tiện.'}</p></div></a>)}</div></div></section>
+
+  <section class="iot-section iot-soft" id="chi-phi"><div class="container-site"><div class="iot-section-head"><div><span class="iot-kicker">RÕ RÀNG TRƯỚC KHI LẮP</span><h2>Một giải pháp.<br/>Đầy đủ phần bạn cần.</h2></div><p>Xác nhận thiết bị, cách lắp đặt và phí sử dụng trước khi mua. Không chỉ nhìn vào giá của riêng thiết bị.</p></div><div class="iot-package"><div class="iot-package-main"><span class="iot-package-label">GÓI SỬ DỤNG BAN ĐẦU</span><h3>Thiết bị + kết nối + ứng dụng</h3><p>Gói giới thiệu tặng kèm <strong>12 tháng SIM Data 4G và sử dụng IOPGPS</strong>, hỗ trợ kích hoạt và hướng dẫn sử dụng.</p><a class="iot-button iot-button-primary" href={contact.zaloUrl} target="_blank" rel="noopener">Nhận báo giá theo loại xe <ArrowUpRight size={18}/></a></div><div class="iot-package-details"><div><span>01</span><p><strong>Thiết bị & lắp đặt</strong><small>Báo giá theo model, loại xe và phương án lắp.</small></p></div><div><span>02</span><p><strong>SIM & ứng dụng</strong><small>Xác nhận thời hạn sử dụng và nội dung đi kèm trong báo giá.</small></p></div><div><span>03</span><p><strong>Gia hạn từ năm thứ hai</strong><small>Phí duy trì theo chính sách tại thời điểm gia hạn; trao đổi rõ trước khi mua.</small></p></div><a href="/bao-hanh/" class="iot-text-link">Xem chính sách bảo hành, đổi mới <ArrowRight size={17}/></a></div></div></div></section>
+
+  <section class="iot-section" id="tai-app"><div class="container-site iot-download"><div><span class="iot-kicker">LUÔN TRONG TẦM TAY</span><h2>Ứng dụng IOPGPS.<br/>Chọn cách truy cập của bạn.</h2><p>Tải ứng dụng cho điện thoại hoặc mở phiên bản Web. Xem hướng dẫn để bắt đầu với tài khoản được cấp.</p><div class="iot-actions"><a class="iot-button iot-button-primary" href={appLinks.appStore} target="_blank" rel="noopener"><Download size={18}/> App Store</a><a class="iot-button iot-button-outline" href={appLinks.googlePlay} target="_blank" rel="noopener"><Download size={18}/> Google Play</a><a class="iot-text-link" href={appLinks.web} target="_blank" rel="noopener">Mở trên Web <ArrowUpRight size={18}/></a></div><a class="iot-download-guide" href="/huong-dan/">Cần hỗ trợ? Xem hướng dẫn sử dụng <ArrowRight size={16}/></a></div><div class="iot-qr"><a href={appLinks.smartDownload} aria-label="Mở trang tải ứng dụng IOPGPS"><img src="/assets/app/qrcodeiopgps.svg" width="190" height="190" alt="Mã QR tải ứng dụng IOPGPS" loading="lazy"/></a><strong>Quét để tải ứng dụng</strong><span>Dùng camera điện thoại của bạn</span></div></div></section>
+
+  <section class="iot-section iot-faq-section"><div class="container-site iot-faq-layout"><div><span class="iot-kicker">TRƯỚC KHI BẠN QUYẾT ĐỊNH</span><h2>Có thể bạn<br/>đang muốn biết.</h2><a class="iot-text-link" href="/huong-dan/">Trung tâm hướng dẫn <ArrowRight size={18}/></a></div><div class="iot-faq-list">{faq.map(([question,answer])=><details><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div></div></section>
+ </main><Footer/><ContactDock/>
+ <script is:inline>
+  (()=>{
+   const demo=document.querySelector('[data-app-demo]');if(!demo)return;
+   const tabs=[...demo.querySelectorAll('[data-demo-tab]')];
+   const select=tab=>{const id=tab.dataset.demoTab;tabs.forEach(item=>{const active=item===tab;item.setAttribute('aria-selected',String(active));item.tabIndex=active?0:-1});demo.querySelectorAll('[data-demo-panel]').forEach(panel=>panel.hidden=panel.dataset.demoPanel!==id);demo.querySelectorAll('[data-demo-image]').forEach(image=>image.hidden=image.dataset.demoImage!==id)};
+   select(tabs.find(tab=>tab.getAttribute('aria-selected')==='true') || tabs[0]);
+   tabs.forEach((tab,index)=>{tab.addEventListener('click',()=>select(tab));tab.addEventListener('keydown',event=>{let next=index;if(event.key==='ArrowRight')next=(index+1)%tabs.length;else if(event.key==='ArrowLeft')next=(index+tabs.length-1)%tabs.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=tabs.length-1;else return;event.preventDefault();select(tabs[next]);tabs[next].focus()})});
+  })();
+ </script>
 </BaseLayout>
